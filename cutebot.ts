@@ -30,7 +30,7 @@ namespace cuteBot {
     pins.onPulsed(recPin, PulseValue.High, function () {
         arr.push(input.runningTimeMicros())
     })
-    control.onEvent(recPin, DAL.MICROBIT_PIN_EVENT_ON_TOUCH, tempHandler);
+ //   control.onEvent(recPin, DAL.MICROBIT_PIN_EVENT_ON_TOUCH, tempHandler);
     rec_init = true;
 	/**
 	* Unit of Ultrasound Module
