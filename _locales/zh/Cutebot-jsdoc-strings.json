@@ -1,0 +1,19 @@
+{
+  "cuteBot": "用以驱动恩孚电子科技出品的Cutebot",
+  "cuteBot.ButtonList": "Button List of Infrared Remote Controller\r\nController like this https://www.elecfreaks.com/estore/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/i/r/ir7135533.jpg",
+  "cuteBot.Motors": "Select the motor on the left or right",
+  "cuteBot.RGBLights": "Select the RGBLights on the left or right",
+  "cuteBot.SonarUnit": "Unit of Ultrasound Module",
+  "cuteBot.TrackingState": "Status List of Tracking Modules",
+  "cuteBot.back": "TODO: full speed move back,speed is -100.",
+  "cuteBot.forward": "TODO: full speed move forward,speed is 100.",
+  "cuteBot.motors": "TODO: Set the speed of left and right wheels.",
+  "cuteBot.motors|param|lspeed": "Left wheel speed , eg: 100",
+  "cuteBot.motors|param|rspeed": "Right wheel speed, eg: -100",
+  "cuteBot.rgblight": "Select a lamp and set the RGB color.",
+  "cuteBot.tracking": "Judging the Current Status of Tracking Module.",
+  "cuteBot.tracking|param|state": "Four states of tracking module, eg: L_R_line",
+  "cuteBot.turnleft": "TODO: full speed turnleft.",
+  "cuteBot.turnright": "TODO: full speed turnright.",
+  "cuteBot.ultrasonic": "Cars can extend the ultrasonic function to prevent collisions and other functions.."
+}

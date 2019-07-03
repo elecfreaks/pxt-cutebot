@@ -9,7 +9,9 @@
     },
     "files": [
         "README.md",
-        "cutebot.ts"
+        "cutebot.ts",
+        "_locales/zh/Cutebot-strings.json",
+        "_locales/zh/Cutebot-jsdoc-strings.json"
     ],
     "testFiles": [
         "tests.ts"
