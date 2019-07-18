@@ -200,6 +200,8 @@ namespace cuteBot {
     //% weight=10
     //% blockId=ringbitcar_tracking block="tracking state is %state"
     export function tracking(state: TrackingState): boolean {
+	pins.setPull(DigitalPin.P13, PinPullMode.PullUp)
+        pins.setPull(DigitalPin.P14, PinPullMode.PullUp)
         let left_tracking = pins.digitalReadPin(DigitalPin.P13);
         let right_tracking = pins.digitalReadPin(DigitalPin.P14);
         if (left_tracking == 0 && right_tracking == 0 && state == 0) {
