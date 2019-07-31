@@ -58,6 +58,7 @@ namespace cuteBot {
         //% block="◌ ◌" enumval=3
         L_R_unline
     }
+
     /**
 * Button List of Infrared Remote Controller
 * Controller like this https://www.elecfreaks.com/estore/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/i/r/ir7135533.jpg
@@ -259,7 +260,10 @@ namespace cuteBot {
     //% weight=10
     //% blockId=ringbitcar_tracking block="tracking state is %state"
     export function tracking(state: TrackingState): boolean {
+
         pins.setPull(DigitalPin.P13, PinPullMode.PullUp)
+
+
         pins.setPull(DigitalPin.P14, PinPullMode.PullUp)
         let left_tracking = pins.digitalReadPin(DigitalPin.P13);
         let right_tracking = pins.digitalReadPin(DigitalPin.P14);
