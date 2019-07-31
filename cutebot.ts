@@ -4,6 +4,17 @@
 //% weight=5 color=#0fbc11  icon="\uf207" 
 namespace cuteBot {
     const STM8_ADDRESSS = 0x10
+    let tempHandler: Action;
+    const pwmPeriod = 26;
+    let rec_init = false;
+    let arr: number[] = []
+    let received = false
+    let first = true
+    let rec_Type = ""
+    let messageStr = ""
+    let recPin = DigitalPin.P8
+    let thereIsHandler = false
+    arr = []
 	/**
 	* Unit of Ultrasound Module
 	*/
@@ -47,10 +58,10 @@ namespace cuteBot {
         //% block="◌ ◌" enumval=3
         L_R_unline
     }
-	/**
-	* Button List of Infrared Remote Controller
-	* Controller like this https://www.elecfreaks.com/estore/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/i/r/ir7135533.jpg
-	*/
+    /**
+* Button List of Infrared Remote Controller
+* Controller like this https://www.elecfreaks.com/estore/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/i/r/ir7135533.jpg
+*/
     export enum ButtonList {
         //% block="Power" enumval=0
         Button_power,
@@ -248,6 +259,8 @@ namespace cuteBot {
     //% weight=10
     //% blockId=ringbitcar_tracking block="tracking state is %state"
     export function tracking(state: TrackingState): boolean {
+        pins.setPull(DigitalPin.P13, PinPullMode.PullUp)
+        pins.setPull(DigitalPin.P14, PinPullMode.PullUp)
         let left_tracking = pins.digitalReadPin(DigitalPin.P13);
         let right_tracking = pins.digitalReadPin(DigitalPin.P14);
         if (left_tracking == 0 && right_tracking == 0 && state == 0) {
@@ -291,5 +304,142 @@ namespace cuteBot {
             default:
                 return d;
         }
+    }
+    export function setREC_pin(myPin: DigitalPin) {
+        recPin = myPin;
+        pins.setEvents(recPin, PinEventType.Pulse)
+        pins.setPull(recPin, PinPullMode.PullUp)
+        pins.onPulsed(recPin, PulseValue.Low, function () {
+            arr.push(input.runningTimeMicros())
+        })
+        pins.onPulsed(recPin, PulseValue.High, function () {
+            arr.push(input.runningTimeMicros())
+        })
+        control.onEvent(recPin, DAL.MICROBIT_PIN_EVENT_ON_TOUCH, tempHandler);
+        rec_init = true;
+    }
+    //------------------receiver-------------
+
+    function resetReceiver() {
+        arr = []
+        received = false
+    }
+
+    control.inBackground(function () {
+        setREC_pin(DigitalPin.P16)
+        basic.forever(function () {
+            if ((!received) && (rec_init)) {
+                if (arr.length > 20) {
+                    if ((input.runningTimeMicros() - arr[arr.length - 1]) > 120000) {
+                        if (first) {
+                            resetReceiver()
+                            first = false
+                        } else {
+                            received = true
+                            decodeIR();
+                        }
+                    }
+                }
+            }
+        })
+    })
+
+    function decodeIR() {
+        let addr = 0
+        let command = 0
+        messageStr = ""
+        rec_Type = ""
+        for (let i = 0; i <= arr.length - 1 - 1; i++) {
+            arr[i] = arr[i + 1] - arr[i]
+        }
+        if (((arr[0] + arr[1]) > 13000) && ((arr[0] + arr[1]) < 14000)) {
+            rec_Type = "NEC"
+            arr.removeAt(1)
+            arr.removeAt(0)
+            addr = pulseToDigit(0, 15, 1600)
+            command = pulseToDigit(16, 31, 1600)
+            messageStr = convertNumToHexStr(addr, 4) + convertNumToHexStr(command, 4)
+
+            arr = [];
+            if (thereIsHandler) {
+                tempHandler();
+            }
+        } else if (((arr[0] + arr[1]) > 2600) && ((arr[0] + arr[1]) < 3200)) {
+            rec_Type = "SONY"
+            arr.removeAt(1)
+            arr.removeAt(0)
+            command = pulseToDigit(0, 11, 1300)
+            messageStr = convertNumToHexStr(command, 3)
+
+            arr = [];
+            if (thereIsHandler) {
+                tempHandler();
+            }
+        }
+        resetReceiver();
+    }
+
+    function pulseToDigit(beginBit: number, endBit: number, duration: number): number {
+        let myNum = 0
+        for (let i = beginBit; i <= endBit; i++) {
+            myNum <<= 1
+            if ((arr[i * 2] + arr[i * 2 + 1]) < duration) {
+                myNum += 0
+            } else {
+                myNum += 1
+            }
+        }
+        return myNum
+    }
+
+    function convertNumToHexStr(myNum: number, digits: number): string {
+        let tempDiv = 0
+        let tempMod = 0
+        let myStr = ""
+        tempDiv = myNum
+        while (tempDiv > 0) {
+            tempMod = tempDiv % 16
+            if (tempMod > 9) {
+                myStr = String.fromCharCode(tempMod - 10 + 97) + myStr
+            } else {
+                myStr = tempMod + myStr
+            }
+            tempDiv = Math.idiv(tempDiv, 16)
+        }
+        while (myStr.length != digits) {
+            myStr = "0" + myStr
+        }
+        return myStr
+    }
+
+    /**
+     * Do something when a receive IR
+     */
+    //% blockId=onReceivedIR block="on IR message received" blockInlineInputs=true
+    //% weight=70 blockGap=10
+    //% advanced=true
+    export function onReceivedIR(handler: Action): void {
+        tempHandler = handler
+        thereIsHandler = true
+    }
+
+    /**
+     * return the encoding type of the received IR 
+     */
+    //% blockId=getRecType block="the received IR encoding type"
+    //% weight=60 blockGap=10
+    //% advanced=true
+    export function getRecType(): string {
+        return rec_Type
+    }
+
+    /**
+     * return the message of the received IR 
+     */
+    //% blockId=getMessage block="the received IR message"
+    //% weight=60 blockGap=10
+    //% advanced=true
+    export function getMessage(): string {
+        return messageStr
     }
 }
