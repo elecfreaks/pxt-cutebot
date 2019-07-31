@@ -1,5 +1,4 @@
-{
-  "cuteBot": "用以驱动恩孚电子科技出品的Cutebot智能赛车",
+
   "cuteBot.Motors": "Select the motor on the left or right",
   "cuteBot.RGBLights": "Select the RGBLights on the left or right",
   "cuteBot.SonarUnit": "Unit of Ultrasound Module",

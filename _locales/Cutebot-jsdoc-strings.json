@@ -1,5 +1,6 @@
 {
   "cuteBot": "Functions to Cutebot by ELECFREAKS Co.,Ltd.",
+  "cuteBot.ButtonList": "Button List of Infrared Remote Controller\r\nController like this https://www.elecfreaks.com/estore/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/i/r/ir7135533.jpg",
   "cuteBot.Motors": "Select the motor on the left or right",
   "cuteBot.RGBLights": "Select the RGBLights on the left or right",
   "cuteBot.SonarUnit": "Unit of Ultrasound Module",
