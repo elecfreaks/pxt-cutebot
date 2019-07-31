@@ -60,54 +60,6 @@ namespace cuteBot {
     }
 
     /**
-* Button List of Infrared Remote Controller
-* Controller like this https://www.elecfreaks.com/estore/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/i/r/ir7135533.jpg
-*/
-    export enum ButtonList {
-        //% block="Power" enumval=0
-        Button_power,
-        //% block="Any" enumval=99
-        Button_Any,
-        //% block="MENU" enumval=1
-        Button_menu,
-        //% block="+" enumval=2
-        Button_add,
-        //% block="▲" enumval=3
-        Button_up,
-        //% block="return" enumval=4
-        Button_return,
-        //% block="◄" enumval=5
-        Button_left,
-        //% block="OK" enumval=6
-        Button_OK,
-        //% block="►" enumval=7
-        Button_right,
-        //% block="-" enumval=8
-        Button_minus,
-        //% block="▼" enumval=9
-        Button_down,
-        //% block="0" enumval=10
-        Button_0,
-        //% block="1" enumval=11
-        Button_1,
-        //% block="2" enumval=12
-        Button_2,
-        //% block="3" enumval=13
-        Button_3,
-        //% block="4" enumval=14
-        Button_4,
-        //% block="5" enumval=15
-        Button_5,
-        //% block="6" enumval=16
-        Button_6,
-        //% block="7" enumval=17
-        Button_7,
-        //% block="8" enumval=18
-        Button_8,
-        //% block="9" enumval=19
-        Button_9
-    }
-    /**
      * TODO: Set the speed of left and right wheels. 
      * @param lspeed Left wheel speed , eg: 100
      * @param rspeed Right wheel speed, eg: -100
