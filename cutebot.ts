@@ -260,8 +260,14 @@ namespace cuteBot {
                 return d;
         }
     }
-    export function setREC_pin(myPin: DigitalPin) {
-        recPin = myPin;
+    /**
+     *  set the IR receiver pin.
+     */
+    //% blockId=setREC_pin block="Enable IR function"
+    //% weight=85 blockGap=10
+    //% advanced=true
+    export function setREC_pin() {
+        recPin = DigitalPin.P16;
         pins.setEvents(recPin, PinEventType.Pulse)
         pins.setPull(recPin, PinPullMode.PullUp)
         pins.onPulsed(recPin, PulseValue.Low, function () {
@@ -281,7 +287,6 @@ namespace cuteBot {
     }
 
     control.inBackground(function () {
-        setREC_pin(DigitalPin.P16)
         basic.forever(function () {
             if ((!received) && (rec_init)) {
                 if (arr.length > 20) {
