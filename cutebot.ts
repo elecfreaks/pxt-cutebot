@@ -259,7 +259,7 @@ namespace cuteBot {
   * button pushed.
   */
   //% blockId=ir_received_event
-  //% blockGap=20 weight=70
+  //% blockGap=20 weight=20
   //% block="on |%btn| button pressed"
   //% shim=IR::onPressEvent
   export function onPressEvent(btn: RemoteButton, body:Action): void {

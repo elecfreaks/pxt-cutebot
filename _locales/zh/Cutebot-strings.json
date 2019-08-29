@@ -11,15 +11,13 @@
   "cuteBot.TrackingState.L_unline_R_line|block": "◌ ●",
   "cuteBot.back|block": "全速倒退",
   "cuteBot.forward|block": "全速前进",
-  "cuteBot.getMessage|block": "红外线收到的值",
-  "cuteBot.getRecType|block": "收到的红外线编码方式",
   "cuteBot.motors|block": "设置左轮速度为 %lspeed| 右轮速度为 %rspeed",
-  "cuteBot.onReceivedIR|block": "当红外线收到消息",
+  "cuteBot.onPressEvent|block": "当红外遥控器 |%btn| 键按下时",
   "cuteBot.rgblight|block": "设置LED车头灯颜色 %light 红:%r 绿:%g 蓝:%b",
   "cuteBot.tracking|block": "巡线头当前状态为 %state",
   "cuteBot.turnleft|block": "全速左转",
   "cuteBot.turnright|block": "全速右转",
-  "cuteBot.ultrasonic|block": "HC-SR04超声波返回值的单位 %unit",
-  "cuteBot|block": "cuteBot",
+  "cuteBot.ultrasonic|block": "HC-SR04超声波返回%unit距离值",
+  "cuteBot|block": "CuteBot",
   "{id:category}CuteBot": "CuteBot"
 }
