@@ -1,6 +1,6 @@
 {
     "name": "Cutebot",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "ELECFREAKS cutebot car",
     "license": "MIT",
     "dependencies": {
@@ -10,6 +10,12 @@
     "files": [
         "README.md",
         "cutebot.ts",
+        "shims.d.ts",
+        "enums.d.ts",
+        "ir.cpp",
+        "ReceiverIR.cpp",
+        "ReceiverIR.h",
+        "RemoteIR.h",
         "_locales/zh/Cutebot-strings.json",
         "_locales/zh/Cutebot-jsdoc-strings.json"
     ],

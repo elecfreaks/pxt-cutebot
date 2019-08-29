@@ -4,6 +4,7 @@
 //% weight=5 color=#0fbc11  icon="\uf207" 
 namespace cuteBot {
     const STM8_ADDRESSS = 0x10
+    cuteBot.init(Pins.P16)
 	/**
 	* Unit of Ultrasound Module
 	*/
@@ -201,10 +202,8 @@ namespace cuteBot {
     //% blockId=ringbitcar_tracking block="tracking state is %state"
     export function tracking(state: TrackingState): boolean {
 
-        pins.setPull(DigitalPin.P13, PinPullMode.PullUp)
-
-
-        pins.setPull(DigitalPin.P14, PinPullMode.PullUp)
+        pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
+        pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
         let left_tracking = pins.digitalReadPin(DigitalPin.P13);
         let right_tracking = pins.digitalReadPin(DigitalPin.P14);
         if (left_tracking == 0 && right_tracking == 0 && state == 0) {
@@ -249,4 +248,20 @@ namespace cuteBot {
                 return d;
         }
     }
+  //% shim=IR::init
+  export function init(pin: Pins): void {
+    return
+  }
+
+  /**
+  * button pushed.
+  */
+  //% blockId=ir_received_event
+  //% blockGap=20 weight=10
+  //% block="on |%btn| button pressed"
+  //% shim=IR::onPressEvent
+  export function onPressEvent(btn: RemoteButton, body:Action): void {
+    return
+  }
+
 }
