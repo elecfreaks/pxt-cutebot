@@ -4,6 +4,7 @@
 //% weight=5 color=#0fbc11  icon="\uf207" 
 namespace cuteBot {
     const STM8_ADDRESSS = 0x10
+    cuteBot.init(Pins.P16)
 	/**
 	* Unit of Ultrasound Module
 	*/
@@ -249,4 +250,20 @@ namespace cuteBot {
                 return d;
         }
     }
+  //% shim=IR::init
+  export function init(pin: Pins): void {
+    return
+  }
+
+  /**
+  * button pushed.
+  */
+  //% blockId=ir_received_event
+  //% blockGap=20 weight=70
+  //% block="on |%btn| button pressed"
+  //% shim=IR::onPressEvent
+  export function onPressEvent(btn: RemoteButton, body:Action): void {
+    return
+  }
+
 }
