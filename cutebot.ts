@@ -24,6 +24,15 @@ namespace cuteBot {
         M2 = 1
     }
 	/**
+	* Select the servo on the S1 or S2
+	*/
+	export enum servoList {
+        //% block="S1"
+        S1 = 0,
+        //% block="S2"
+        S2 = 1
+    }
+	/**
 	* Select the RGBLights on the left or right
 	*/
     export enum RGBLights {
@@ -168,7 +177,30 @@ namespace cuteBot {
         buf[2] = 0;
         pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
     }
-
+    /**
+     * TODO: Set the angle of servo. 
+     * @param Servo ServoList , eg: cuteBot.servoList.S1
+     * @param angle angle of servo, eg: 90
+     */
+    //% blockId=cutebot_servo block="set servo %servoList angle to %angle °"
+    //% angle.shadow="protractorPicker"
+    export function setServo(Servo: servoList, angle: number = 180): void {
+        let buf = pins.createBuffer(4);
+        if (Servo == servoList.S1) {
+            buf[0] = 0x05;
+            buf[1] = angle;
+            buf[2] = 0;
+            buf[3] = 0;			//补位
+            pins.i2cWriteBuffer(STM8_ADDRESSS, buf);  
+        }
+        else {
+            buf[0] = 0x06;
+            buf[1] = angle;
+            buf[2] = 0;
+            buf[3] = 0;			//补位
+            pins.i2cWriteBuffer(STM8_ADDRESSS, buf);  
+        }
+    }
 	/**
 	* Select a lamp and set the RGB color. 
 	* @param R R color value of RGB color, eg: 0
