@@ -21,6 +21,6 @@
   "cuteBot.turnleft|block": "全速左转",
   "cuteBot.turnright|block": "全速右转",
   "cuteBot.ultrasonic|block": "HC-SR04超声波返回%unit距离值",
-  "cuteBot|block": "CuteBot",
-  "{id:category}CuteBot": "CuteBot"
+  "cuteBot|block": "酷比特小车",
+  "{id:category}CuteBot": "酷比特小车"
 }
