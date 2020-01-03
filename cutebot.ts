@@ -268,14 +268,14 @@ namespace cuteBot {
         control.waitMicros(10);
         pins.digitalWritePin(DigitalPin.P8, 0);
 
-        // read pulse
-        const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 58);
+// read pulse
+        const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance*50);
 
         switch (unit) {
             case SonarUnit.Centimeters:
-                return Math.idiv(d, 58);
+                return Math.floor(d * 9 / 6 / 58);
             case SonarUnit.Inches:
-                return Math.idiv(d, 148);
+                return Math.floor(d * 9 / 6 / 148);
             default:
                 return d;
         }
