@@ -1,4 +1,6 @@
 {
+  "cuteBot.Direction.backward|block": "后退",
+  "cuteBot.Direction.forward|block": "前进",
   "cuteBot.Motors.M1|block": "M1",
   "cuteBot.Motors.M2|block": "M2",
   "cuteBot.RGBLights.RGB_L|block": "右侧RGB车灯",
@@ -12,6 +14,7 @@
   "cuteBot.back|block": "全速倒退",
   "cuteBot.forward|block": "全速前进",
   "cuteBot.motors|block": "设置左轮速度为 %lspeed| 右轮速度为 %rspeed",
+  "cuteBot.moveTime|block": "向 %dir 持续 %time 秒",
   "cuteBot.onPressEvent|block": "当红外遥控器 |%btn| 键按下时",
   "cuteBot.rgblight|block": "设置LED车头灯颜色 %light 红:%r 绿:%g 蓝:%b",
   "cuteBot.servoList.S1|block": "S1",

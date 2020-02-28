@@ -57,6 +57,12 @@ namespace cuteBot {
         //% block="◌ ◌" enumval=3
         L_R_unline
     }
+    export enum Direction {
+        //% block="forward" enumval=0
+        forward,
+        //% block="backward" enumval=1
+        backward
+    }
     /**
      * TODO: Set the speed of left and right wheels. 
      * @param lspeed Left wheel speed , eg: 100
@@ -107,6 +113,23 @@ namespace cuteBot {
             pins.i2cWriteBuffer(STM8_ADDRESSS, buf);  //写入左轮
         }
 
+    }
+    /**
+    * TODO: Full speed operation lasts for 10 seconds,speed is 100.
+    */
+    //% weight=77
+    //% blockId=cutebot_move_time block="go %dir for %time seconds"
+    export function moveTime(dir: Direction, time: number): void {
+        if (dir == 0) {
+            forward();
+            basic.pause(time*1000)
+            motors(0,0)
+        }
+        else {
+            back()
+            basic.pause(time*1000)
+            motors(0,0)
+        }
     }
     /**
     * TODO: full speed move forward,speed is 100.

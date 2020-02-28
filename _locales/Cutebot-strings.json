@@ -1,4 +1,6 @@
 {
+  "cuteBot.Direction.backward|block": "backward",
+  "cuteBot.Direction.forward|block": "forward",
   "cuteBot.Motors.M1|block": "M1",
   "cuteBot.Motors.M2|block": "M2",
   "cuteBot.RGBLights.RGB_L|block": "Right_RGB",
@@ -12,6 +14,7 @@
   "cuteBot.back|block": "reverse at full speed",
   "cuteBot.forward|block": "go straight at full speed",
   "cuteBot.motors|block": "set left wheel speed %lspeed| right wheel speed %rspeed",
+  "cuteBot.moveTime|block": "go %dir for %time seconds",
   "cuteBot.onPressEvent|block": "on |%btn| button pressed",
   "cuteBot.rgblight|block": "LED %light R:%r G:%g B:%b",
   "cuteBot.servoList.S1|block": "S1",

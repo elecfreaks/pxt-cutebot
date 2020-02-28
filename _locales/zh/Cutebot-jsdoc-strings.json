@@ -9,6 +9,7 @@
   "cuteBot.motors": "TODO: Set the speed of left and right wheels.",
   "cuteBot.motors|param|lspeed": "Left wheel speed , eg: 100",
   "cuteBot.motors|param|rspeed": "Right wheel speed, eg: -100",
+  "cuteBot.moveTime": "TODO: Full speed operation lasts for 10 seconds,speed is 100.",
   "cuteBot.onPressEvent": "button pushed.",
   "cuteBot.rgblight": "Select a lamp and set the RGB color.",
   "cuteBot.servoList": "Select the servo on the S1 or S2",
