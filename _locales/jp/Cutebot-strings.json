@@ -1,4 +1,4 @@
-﻿{
+{
   "cuteBot.Direction.backward|block": "後進",
   "cuteBot.Direction.forward|block": "前進",
   "cuteBot.Motors.M1|block": "M1",
@@ -13,10 +13,10 @@
   "cuteBot.TrackingState.L_unline_R_line|block": "◌ ●",
   "cuteBot.back|block": "フルスピードで後進",
   "cuteBot.forward|block": "フルスピードで前進",
-  "cuteBot.motors|block": "左タイヤを %lspeed|の速さ 右タイヤを %rspeed速さで回す",
-  "cuteBot.moveTime|block": " %dir向きに %time 秒動かす",
+  "cuteBot.motors|block": "左タイヤを %lspeed| の速さ 右タイヤを %rspeed 速さで回す",
+  "cuteBot.moveTime|block": "%dir 向きに %time 秒動かす",
   "cuteBot.onPressEvent|block": "|%btn| ボタンが押されたとき",
-  "cuteBot.rgblight|block": " %light のLEDを R:%r G:%g B:%b",
+  "cuteBot.rgblight|block": "%light のLEDを R:%r G:%g B:%b",
   "cuteBot.servoList.S1|block": "S1",
   "cuteBot.servoList.S2|block": "S2",
   "cuteBot.setServo|block": "サーボ %servoList の角度を %angle °にする",
