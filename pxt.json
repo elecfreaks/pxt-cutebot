@@ -18,7 +18,7 @@
         "RemoteIR.h",
         "_locales/zh/Cutebot-strings.json",
         "_locales/zh/Cutebot-jsdoc-strings.json",
-		"_locales/ja/Cutebot-strings.json"
+		"_locales/jp/Cutebot-strings.json"
     ],
     "testFiles": [
         "tests.ts"
