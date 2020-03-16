@@ -1,4 +1,4 @@
-﻿{
+{
   "cuteBot.Direction.backward|block": "後進",
   "cuteBot.Direction.forward|block": "前進",
   "cuteBot.Direction.left|block": "左折",
@@ -24,11 +24,11 @@
   "cuteBot.closeheadlights|block": "ヘッドライトを消す",
   "cuteBot.colorLight|block": "%light のヘッドライトを $color 色で点灯する",
   "cuteBot.forward|block": "フルスピードで前進",
-  "cuteBot.motors|block": "左タイヤを %lspeed\\% の速さ、 |右タイヤを %rspeed\\%　の速さで回す",
-  "cuteBot.moveTime|block": "%dir 向きに %speed\\% の速さで %time 秒動かす",
+  "cuteBot.motors|block": "タイヤを %lspeed\\%の速さ、|右タイヤを %rspeed\\%の速さで回す",
+  "cuteBot.moveTime|block": "%dir 向きに%speed\\% の速さで %time 秒動かす",
   "cuteBot.onPressEvent|block": "|%btn| ボタンが押されたとき",
-  "cuteBot.setServo|block": "サーボ %servo の角度を %angle にする °",
-  "cuteBot.singleheadlights|block": "%light のヘッドライトを　赤:%r 緑:%g 青:%b で点灯する",
+  "cuteBot.setServo|block": "サーボ %servo  の角度を %angle にする °",
+  "cuteBot.singleheadlights|block": "%light のヘッドライトを 赤:%r 緑:%g 青:%b で点灯する",
   "cuteBot.stopcar|block": "動きを止める",
   "cuteBot.trackEvent|block": "ライントレースセンサの %sensor| が %event",
   "cuteBot.trackSide|block": "ライントレースセンサの %side が %state",
