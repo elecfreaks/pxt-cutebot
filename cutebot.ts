@@ -5,6 +5,7 @@
 namespace cuteBot {
 const STM8_ADDRESSS = 0x10
     let _initEvents = true
+    cuteBot.init(Pins.P16)
 	/**
 	* Unit of Ultrasound Module
 	*/
