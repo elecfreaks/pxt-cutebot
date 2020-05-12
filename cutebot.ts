@@ -1,9 +1,9 @@
 /**
  * Functions to Cutebot by ELECFREAKS Co.,Ltd.
  */
-//% weight=5 color=#0fbc11  icon="\uf207" 
+//% weight=5 color=#2896ff  icon="\uf013"
 namespace cuteBot {
-const STM8_ADDRESSS = 0x10
+    const STM8_ADDRESSS = 0x10
     let _initEvents = true
     cuteBot.init(Pins.P16)
 	/**
@@ -87,6 +87,10 @@ const STM8_ADDRESSS = 0x10
         Left = DAL.MICROBIT_ID_IO_P13,
         //% block="Right" 
         Right = DAL.MICROBIT_ID_IO_P14
+    }
+    //% blockId=Initialize block="Initialize CutebotEDU"
+    export function initcar(): void {
+        // 
     }
     /**
      * TODO: Set the speed of left and right wheels. 
@@ -428,19 +432,19 @@ const STM8_ADDRESSS = 0x10
             _initEvents = false;
         }
     }
-  //% shim=IR::init
-  export function init(pin: Pins): void {
-    return
-  }
+    //% shim=IR::init
+    export function init(pin: Pins): void {
+        return
+    }
 
-  /**
-  * button pushed.
-  */
-  //% blockId=ir_received_event
-  //% block="on |%btn| button pressed"
-  //% shim=IR::onPressEvent
-  export function onPressEvent(btn: RemoteButton, body:Action): void {
-    return
-  }
+    /**
+    * button pushed.
+    */
+    //% blockId=ir_received_event
+    //% block="on |%btn| button pressed"
+    //% shim=IR::onPressEvent
+    export function onPressEvent(btn: RemoteButton, body: Action): void {
+        return
+    }
 
 }
