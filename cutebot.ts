@@ -88,6 +88,10 @@ const STM8_ADDRESSS = 0x10
         //% block="Right" 
         Right = DAL.MICROBIT_ID_IO_P14
     }
+    //% blockId=Initialize block="Initialize CutebotEDU"
+    export function initcar(): void{
+        // 
+    }
     /**
      * TODO: Set the speed of left and right wheels. 
      * @param lspeed Left wheel speed , eg: 100
