@@ -1,6 +1,6 @@
 {
     "name": "Cutebot",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "description": "ELECFREAKS cutebot car",
     "license": "MIT",
     "dependencies": {
@@ -17,9 +17,7 @@
         "ReceiverIR.h",
         "RemoteIR.h",
         "_locales/zh/Cutebot-strings.json",
-        "_locales/zh/Cutebot-jsdoc-strings.json",
-        "_locales/ja/Cutebot-strings.json",
-        "_locales/ja/Cutebot-jsdoc-strings.json"
+        "_locales/zh/Cutebot-jsdoc-strings.json"
     ],
     "testFiles": [
         "tests.ts"
