@@ -395,10 +395,8 @@ const STM8_ADDRESSS = 0x10
         pins.digitalWritePin(DigitalPin.P8, 1);
         control.waitMicros(10);
         pins.digitalWritePin(DigitalPin.P8, 0);
-
         // read pulse
         const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 50);
-
         switch (unit) {
             case SonarUnit.Centimeters:
                 return Math.floor(d * 9 / 6 / 58);
