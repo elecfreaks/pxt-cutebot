@@ -96,6 +96,7 @@ const STM8_ADDRESSS = 0x10
     //% blockId=MotorRun block="Set left wheel speed %lspeed\\% |right wheel speed %rspeed\\%"
     //% lspeed.min=-100 lspeed.max=100
     //% rspeed.min=-100 rspeed.max=100
+    //% weight=100
     export function motors(lspeed: number = 50, rspeed: number = 50): void {
         let buf = pins.createBuffer(4);
         if (lspeed > 100) {
@@ -145,6 +146,7 @@ const STM8_ADDRESSS = 0x10
     * @param time Travel time, eg: 5
     */
     //% blockId=cutebot_move_time block="Go %dir at speed%speed\\% for %time seconds"
+    //% weight=95
     export function moveTime(dir: Direction, speed: number, time: number): void {
         if (dir == 0) {
             motors(speed, speed);
@@ -171,6 +173,7 @@ const STM8_ADDRESSS = 0x10
     * TODO: full speed move forward,speed is 100.
     */
     //% blockId=cutebot_forward block="Go straight at full speed"
+    //% weight=90
     export function forward(): void {
         // Add code here
         let buf = pins.createBuffer(4);
@@ -188,6 +191,7 @@ const STM8_ADDRESSS = 0x10
     * TODO: full speed move back,speed is -100.
     */
     //% blockId=cutebot_back block="Reverse at full speed"
+    //% weight=85
     export function backforward(): void {
         // Add code here
         let buf = pins.createBuffer(4);
@@ -204,6 +208,7 @@ const STM8_ADDRESSS = 0x10
     * TODO: full speed turnleft.
     */
     //% blockId=cutebot_left block="Turn left at full speed"
+    //% weight=80
     export function turnleft(): void {
         // Add code here
         let buf = pins.createBuffer(4);
@@ -220,6 +225,7 @@ const STM8_ADDRESSS = 0x10
     * TODO: full speed turnright.
     */
     //% blockId=cutebot_right block="Turn right at full speed"
+    //% weight=75
     export function turnright(): void {
         // Add code here
         let buf = pins.createBuffer(4);
@@ -236,6 +242,7 @@ const STM8_ADDRESSS = 0x10
     * TODO: stopcar
     */
     //% blockId=cutebot_stopcar block="Stop car immediatly"
+    //% weight=70
     export function stopcar(): void {
         motors(0, 0)
     }
@@ -244,6 +251,7 @@ const STM8_ADDRESSS = 0x10
     */
     //% block="Set LED headlights %light color $color"
     //% color.shadow="colorNumberPicker"
+    //% weight=65
     export function colorLight(light: RGBLights, color: number) {
         let r, g, b: number = 0
         r = color >> 16
@@ -262,6 +270,7 @@ const STM8_ADDRESSS = 0x10
     //% r.min=0 r.max=255
     //% g.min=0 g.max=255
     //% b.min=0 b.max=255
+    //% weight=60
     export function singleheadlights(light: RGBLights, r: number, g: number, b: number): void {
         let buf = pins.createBuffer(4);
         if (light == 3) {
@@ -292,6 +301,7 @@ const STM8_ADDRESSS = 0x10
     */
     //% inlineInputMode=inline
     //% block="Turn off all LED headlights"
+    //% weight=55
     export function closeheadlights(): void {
         let buf = pins.createBuffer(4);
         buf[0] = 0x04;
@@ -308,8 +318,8 @@ const STM8_ADDRESSS = 0x10
 	* @param state Four states of tracking module, eg: TrackingState.L_R_line
     */
     //% blockId=ringbitcar_tracking block="Tracking state is %state"
+    //% weight=50
     export function tracking(state: TrackingState): boolean {
-
         pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
         pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
         let left_tracking = pins.digitalReadPin(DigitalPin.P13);
@@ -338,6 +348,7 @@ const STM8_ADDRESSS = 0x10
     //% block="%side line sensor %state"
     //% state.fieldEditor="gridpicker" state.fieldOptions.columns=2
     //% side.fieldEditor="gridpicker" side.fieldOptions.columns=2
+    //% weight=45
     export function trackSide(side: MbPins, state: MbEvents): boolean {
         pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
         pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
@@ -365,17 +376,17 @@ const STM8_ADDRESSS = 0x10
     //% block="On %sensor| line %event"
     //% sensor.fieldEditor="gridpicker" sensor.fieldOptions.columns=2
     //% event.fieldEditor="gridpicker" event.fieldOptions.columns=2
+    //% weight=40
     export function trackEvent(sensor: MbPins, event: MbEvents, handler: Action) {
         initEvents();
         control.onEvent(<number>sensor, <number>event, handler);
-        console.logValue("sensor", sensor)
-        console.logValue("event", event)
     }
 	/**
 	* Cars can extend the ultrasonic function to prevent collisions and other functions.. 
 	* @param Sonarunit two states of ultrasonic module, eg: Centimeters
     */
     //% blockId=ultrasonic block="HC-SR04 Sonar unit %unit"
+    //% weight=35
     export function ultrasonic(unit: SonarUnit, maxCmDistance = 500): number {
         // send pulse
         pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
@@ -404,6 +415,7 @@ const STM8_ADDRESSS = 0x10
      */
     //% blockId=cutebot_servo block="Set servo %servo angle to %angle °"
     //% angle.shadow="protractorPicker"
+    //% weight=30
     export function setServo(Servo: ServoList, angle: number = 180): void {
         let buf = pins.createBuffer(4);
         if (Servo == ServoList.S1) {
@@ -437,7 +449,7 @@ const STM8_ADDRESSS = 0x10
   * button pushed.
   */
   //% blockId=ir_received_event
-  //% block="on |%btn| button pressed"
+  //% block="on |%btn| button pressed" weight=25
   //% shim=IR::onPressEvent
   export function onPressEvent(btn: RemoteButton, body:Action): void {
     return

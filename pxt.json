@@ -25,5 +25,8 @@
         "tests.ts"
     ],
     "public": true,
+    "supportedTargets": [
+        "microbit"
+    ],
     "preferredEditor": "tsprj"
 }
