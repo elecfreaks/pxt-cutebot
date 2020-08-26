@@ -32,7 +32,7 @@
   "cuteBot.stopcar|block": "立刻停车",
   "cuteBot.trackEvent|block": "当 %sensor| 巡线传感器 %event 黑线",
   "cuteBot.trackSide|block": "%side 巡线传感器 %state 黑线",
-  "cuteBot.tracking|block": "线头当前状态为 %state",
+  "cuteBot.tracking|block": "巡线头当前状态为 %state",
   "cuteBot.turnleft|block": "全速左转",
   "cuteBot.turnright|block": "全速右转",
   "cuteBot.ultrasonic|block": "HC-SR04超声波返回%unit距离值",
