@@ -253,7 +253,7 @@ const STM8_ADDRESSS = 0x10
     //% color.shadow="colorNumberPicker"
     //% weight=65
     export function colorLight(light: RGBLights, color: number) {
-        let r, g, b: number = 0
+        let r: number, g: number, b: number = 0
         r = color >> 16
         g = (color >> 8) & 0xFF
         b = color & 0xFF
