@@ -10,12 +10,6 @@
     "files": [
         "README.md",
         "cutebot.ts",
-        "shims.d.ts",
-        "enums.d.ts",
-        "ir.cpp",
-        "ReceiverIR.cpp",
-        "ReceiverIR.h",
-        "RemoteIR.h",
         "_locales/zh/Cutebot-strings.json",
         "_locales/zh/Cutebot-jsdoc-strings.json",
         "_locales/ja/Cutebot-strings.json",
