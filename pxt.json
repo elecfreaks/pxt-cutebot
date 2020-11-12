@@ -1,6 +1,6 @@
 {
     "name": "cutebot",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "description": "ELECFREAKS cutebot car",
     "license": "MIT",
     "dependencies": {
@@ -10,10 +10,17 @@
     "files": [
         "README.md",
         "cutebot.ts",
+<<<<<<< HEAD
         "_locales/zh/cutebot-strings.json",
         "_locales/zh/cutebot-jsdoc-strings.json",
         "_locales/ja/cutebot-strings.json",
         "_locales/ja/cutebot-jsdoc-strings.json"
+=======
+        "_locales/zh-CN/Cutebot-strings.json",
+        "_locales/zh-CN/Cutebot-jsdoc-strings.json",
+        "_locales/ja/Cutebot-strings.json",
+        "_locales/ja/Cutebot-jsdoc-strings.json"
+>>>>>>> 1b36d78001ac624330e4471a842e7ef374d9fb1d
     ],
     "testFiles": [
         "tests.ts"
