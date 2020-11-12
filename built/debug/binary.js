@@ -1,4 +1,4 @@
-// total=60865 new=94.77% cached=0.00% other=5.23%
+// total=59388 new=94.53% cached=0.00% other=5.47%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -20,11 +20,13 @@ const checkSubtype = ectx.checkSubtype;
 const failedCast = ectx.failedCast;
 const buildResume = ectx.buildResume;
 const mkVTable = ectx.mkVTable;
+const bind = ectx.bind;
+const leaveAccessor = ectx.leaveAccessor;
 const __this = runtime;
 const pxtrt = pxsim.pxtrt;
 let yieldSteps = 1;
 ectx.setupYield(function() { yieldSteps = 100; })
-pxsim.setTitle("Cutebot");
+pxsim.setTitle("cutebot");
 pxsim.setConfigData({}, {});
 pxtrt.mapKeyNames = [
  "",
@@ -75,47 +77,40 @@ s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    globals.zeroFx8___377 = (0);
-    r0 = (0.5 * 256);
-    s.tmp_0 = r0;
-    r0 = (s.tmp_0 | 0);
-    globals.oneHalfFx8___378 = (r0);
-    globals.oneFx8___380 = (1);
-    globals.twoFx8___381 = (2);
-    globals.strip___451 = (null);
+    globals.strip___560 = (null);
     setupResume(s, 1);
     pxsim.basic.showLeds(new pxsim.Image(5, [0,0,0,255,0,255,0,255,0,255,255,0,255,0,255,255,0,255,0,255,0,255,0,0,0,0]), 400);
     checkResumeConsumed();
     return;
   case 1:
     r0 = s.retval;
-    s.tmp_0 = neopixel_create__P423_mk(s);
-    s.tmp_0.arg0 = 22;
+    s.tmp_0 = neopixel_create__P531_mk(s);
+    s.tmp_0.arg0 = 115;
     s.tmp_0.arg1 = 24;
     s.tmp_0.arg2 = 0;
     s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
-    globals.strip___451 = (r0);
-    s.tmp_0 = neopixel_Strip_showRainbow__P402_mk(s);
-    s.tmp_0.arg0 = globals.strip___451;
+    globals.strip___560 = (r0);
+    s.tmp_0 = neopixel_Strip_showRainbow__P510_mk(s);
+    s.tmp_0.arg0 = globals.strip___560;
     s.tmp_0.arg1 = 1;
     s.tmp_0.arg2 = 360;
     s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    s.tmp_0 = basic_showIcon__P221_mk(s);
+    s.tmp_0 = basic_showIcon__P281_mk(s);
     s.tmp_0.arg0 = 0;
     s.tmp_0.arg1 = 600;
     s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
-    r0 = pxsim.basic.forever(inline__P468);
-    r0 = pxsim.basic.forever(inline__P477);
+    r0 = pxsim.basic.forever(inline__P577);
+    r0 = pxsim.basic.forever(inline__P586);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -135,17 +130,17 @@ function _main___P1_mk(s) {
 
 
 
-function inline__P468(s) {
+function inline__P577(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    s.tmp_0 = cuteBot_motors__P433_mk(s);
+    s.tmp_0 = cuteBot_motors__P543_mk(s);
     s.tmp_0.arg0 = 30;
     s.tmp_0.arg1 = 90;
     s.pc = 1; return s.tmp_0;
@@ -157,7 +152,7 @@ switch (step) {
     return;
   case 2:
     r0 = s.retval;
-    s.tmp_0 = cuteBot_motors__P433_mk(s);
+    s.tmp_0 = cuteBot_motors__P543_mk(s);
     s.tmp_0.arg0 = 90;
     s.tmp_0.arg1 = 30;
     s.pc = 3; return s.tmp_0;
@@ -173,12 +168,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P468.info = {"start":272,"length":118,"line":11,"column":14,"endLine":16,"endColumn":1,"fileName":"tests.ts","functionName":"inline","argumentNames":[]}
+inline__P577.info = {"start":272,"length":118,"line":11,"column":14,"endLine":16,"endColumn":1,"fileName":"tests.ts","functionName":"inline","argumentNames":[]}
 
-function inline__P468_mk(s) {
+function inline__P577_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P468, depth: s.depth + 1,
+        parent: s, fn: inline__P577, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -187,18 +182,18 @@ function inline__P468_mk(s) {
 
 
 
-function inline__P477(s) {
+function inline__P586(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    s.tmp_0 = neopixel_Strip_rotate__P415_mk(s);
-    s.tmp_0.arg0 = globals.strip___451;
+    s.tmp_0 = neopixel_Strip_rotate__P523_mk(s);
+    s.tmp_0.arg0 = globals.strip___560;
     s.tmp_0.arg1 = 1;
     s.pc = 1; return s.tmp_0;
   case 1:
@@ -209,8 +204,8 @@ switch (step) {
     return;
   case 2:
     r0 = s.retval;
-    s.tmp_0 = neopixel_Strip_show__P408_mk(s);
-    s.tmp_0.arg0 = globals.strip___451;
+    s.tmp_0 = neopixel_Strip_show__P516_mk(s);
+    s.tmp_0.arg0 = globals.strip___560;
     s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
@@ -218,12 +213,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P477.info = {"start":407,"length":77,"line":17,"column":14,"endLine":21,"endColumn":1,"fileName":"tests.ts","functionName":"inline","argumentNames":[]}
+inline__P586.info = {"start":407,"length":77,"line":17,"column":14,"endLine":21,"endColumn":1,"fileName":"tests.ts","functionName":"inline","argumentNames":[]}
 
-function inline__P477_mk(s) {
+function inline__P586_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P477, depth: s.depth + 1,
+        parent: s, fn: inline__P586, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -232,13 +227,13 @@ function inline__P477_mk(s) {
 
 
 
-function neopixel_Strip_show__P408(s) {
+function neopixel_Strip_show__P516(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
@@ -247,22 +242,22 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, neopixel_Strip__C400_VT)) failedCast(r0);
+    if (!checkSubtype(r0, neopixel_Strip__C508_VT)) failedCast(r0);
     r0 = s.arg0.fields["buf"];
     s.tmp_0 = r0;
     r0 = s.arg0.fields["pin"];
     s.tmp_1 = r0;
-    r0 = pxsim.sendBufferAsm(s.tmp_0, s.tmp_1);
+    r0 = pxsim.light.sendWS2812Buffer(s.tmp_0, s.tmp_1);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_Strip_show__P408.info = {"start":8497,"length":70,"line":240,"column":8,"endLine":242,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"show","argumentNames":["this"]}
+neopixel_Strip_show__P516.info = {"start":8497,"length":70,"line":240,"column":8,"endLine":242,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"show","argumentNames":["this"]}
 
-function neopixel_Strip_show__P408_mk(s) {
+function neopixel_Strip_show__P516_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_Strip_show__P408, depth: s.depth + 1,
+        parent: s, fn: neopixel_Strip_show__P516, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -273,24 +268,24 @@ function neopixel_Strip_show__P408_mk(s) {
 
 
 
-function neopixel_Strip_rotate__P415(s) {
+function neopixel_Strip_rotate__P523(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    s.stride___497 = undefined;
+    s.stride___607 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, neopixel_Strip__C400_VT)) failedCast(r0);
+    if (!checkSubtype(r0, neopixel_Strip__C508_VT)) failedCast(r0);
     r0 = (s.arg1 >> 0);
     s.arg1 = (r0);
     r0 = s.arg0.fields["_mode"];
@@ -306,32 +301,32 @@ switch (step) {
   case 2:
     // jmp value (already in r0)
     s.tmp_2 = r0;
-    s.stride___497 = (s.tmp_2);
+    s.stride___607 = (s.tmp_2);
     r0 = s.arg0.fields["buf"];
     s.tmp_0 = r0;
     r0 = (0 - s.arg1);
     s.tmp_2 = r0;
-    r0 = (s.tmp_2 * s.stride___497);
+    r0 = (s.tmp_2 * s.stride___607);
     s.tmp_1 = r0;
     r0 = s.arg0.fields["start"];
     s.tmp_4 = r0;
-    r0 = (s.tmp_4 * s.stride___497);
+    r0 = (s.tmp_4 * s.stride___607);
     s.tmp_3 = r0;
     r0 = s.arg0.fields["_length"];
     s.tmp_6 = r0;
-    r0 = (s.tmp_6 * s.stride___497);
+    r0 = (s.tmp_6 * s.stride___607);
     s.tmp_5 = r0;
     r0 = pxsim.BufferMethods.rotate(s.tmp_0, s.tmp_1, s.tmp_3, s.tmp_5);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_Strip_rotate__P415.info = {"start":12820,"length":237,"line":348,"column":8,"endLine":352,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"rotate","argumentNames":["this","offset"]}
+neopixel_Strip_rotate__P523.info = {"start":12820,"length":237,"line":348,"column":8,"endLine":352,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"rotate","argumentNames":["this","offset"]}
 
-function neopixel_Strip_rotate__P415_mk(s) {
+function neopixel_Strip_rotate__P523_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_Strip_rotate__P415, depth: s.depth + 1,
+        parent: s, fn: neopixel_Strip_rotate__P523, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -340,7 +335,7 @@ function neopixel_Strip_rotate__P415_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  stride___497: undefined,
+  stride___607: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -349,24 +344,24 @@ function neopixel_Strip_rotate__P415_mk(s) {
 
 
 
-function cuteBot_motors__P433(s) {
+function cuteBot_motors__P543(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    s.buf___520 = undefined;
+    s.buf___636 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = pxsim.pins.createBuffer(4);
-    s.buf___520 = (r0);
+    s.buf___636 = (r0);
     r0 = (s.arg0 > 100);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
@@ -401,56 +396,56 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 0, 1);
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 1, 2);
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 2, s.arg0);
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 3, 0);
-    r0 = pxsim.pins.i2cWriteBuffer(16, s.buf___520, 0);
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 0, 1);
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 1, 2);
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 2, s.arg0);
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 3, 0);
+    r0 = pxsim.pins.i2cWriteBuffer(16, s.buf___636, 0);
     { step = 10; continue; }
   case 9:
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 0, 1);
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 1, 1);
-    s.tmp_0 = r0 = s.buf___520;
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 0, 1);
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 1, 1);
+    s.tmp_0 = r0 = s.buf___636;
     r0 = (s.arg0 * -1);
     s.tmp_1 = r0;
     r0 = pxsim.BufferMethods.setByte(s.tmp_0, 2, s.tmp_1);
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 3, 0);
-    r0 = pxsim.pins.i2cWriteBuffer(16, s.buf___520, 0);
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 3, 0);
+    r0 = pxsim.pins.i2cWriteBuffer(16, s.buf___636, 0);
   case 10:
     r0 = (s.arg1 > 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 11; continue; }
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 0, 2);
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 1, 2);
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 2, s.arg1);
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 3, 0);
-    r0 = pxsim.pins.i2cWriteBuffer(16, s.buf___520, 0);
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 0, 2);
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 1, 2);
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 2, s.arg1);
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 3, 0);
+    r0 = pxsim.pins.i2cWriteBuffer(16, s.buf___636, 0);
     { step = 12; continue; }
   case 11:
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 0, 2);
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 1, 1);
-    s.tmp_0 = r0 = s.buf___520;
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 0, 2);
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 1, 1);
+    s.tmp_0 = r0 = s.buf___636;
     r0 = (s.arg1 * -1);
     s.tmp_1 = r0;
     r0 = pxsim.BufferMethods.setByte(s.tmp_0, 2, s.tmp_1);
-    r0 = pxsim.BufferMethods.setByte(s.buf___520, 3, 0);
-    r0 = pxsim.pins.i2cWriteBuffer(16, s.buf___520, 0);
+    r0 = pxsim.BufferMethods.setByte(s.buf___636, 3, 0);
+    r0 = pxsim.pins.i2cWriteBuffer(16, s.buf___636, 0);
   case 12:
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-cuteBot_motors__P433.info = {"start":2402,"length":1296,"line":97,"column":4,"endLine":138,"endColumn":5,"fileName":"cutebot.ts","functionName":"motors","argumentNames":["lspeed","rspeed"]}
+cuteBot_motors__P543.info = {"start":2324,"length":1255,"line":98,"column":4,"endLine":139,"endColumn":5,"fileName":"cutebot.ts","functionName":"motors","argumentNames":["lspeed","rspeed"]}
 
-function cuteBot_motors__P433_mk(s) {
+function cuteBot_motors__P543_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: cuteBot_motors__P433, depth: s.depth + 1,
+        parent: s, fn: cuteBot_motors__P543, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  buf___520: undefined,
+  buf___636: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -459,30 +454,30 @@ function cuteBot_motors__P433_mk(s) {
 
 
 
-function basic_showIcon__P221(s) {
+function basic_showIcon__P281(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    s.res___597 = undefined;
+    s.res___727 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    s.tmp_0 = images_iconImage__P224_mk(s);
+    s.tmp_0 = images_iconImage__P284_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.res___597 = (r0);
+    s.res___727 = (r0);
     setupResume(s, 2);
-    pxsim_ImageMethods.showImage(s.res___597, 0, s.arg1);
+    pxsim_ImageMethods.showImage(s.res___727, 0, s.arg1);
     checkResumeConsumed();
     return;
   case 2:
@@ -491,15 +486,15 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-basic_showIcon__P221.info = {"start":4957,"length":141,"line":185,"column":4,"endLine":188,"endColumn":5,"fileName":"pxt_modules/core/icons.ts","functionName":"showIcon","argumentNames":["icon","interval"]}
+basic_showIcon__P281.info = {"start":4957,"length":141,"line":185,"column":4,"endLine":188,"endColumn":5,"fileName":"pxt_modules/core/icons.ts","functionName":"showIcon","argumentNames":["icon","interval"]}
 
-function basic_showIcon__P221_mk(s) {
+function basic_showIcon__P281_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: basic_showIcon__P221, depth: s.depth + 1,
+        parent: s, fn: basic_showIcon__P281, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  res___597: undefined,
+  res___727: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -508,13 +503,13 @@ function basic_showIcon__P221_mk(s) {
 
 
 
-function images_iconImage__P224(s) {
+function images_iconImage__P284(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
@@ -727,16 +722,18 @@ switch (step) {
     { step = 42; continue; }
   case 41:
     r0 = pxsim.images.createImage(new pxsim.Image(5, [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]));
+    { step = 42; continue; }
+    r0 = undefined;
   case 42:
     return leave(s, r0)
   default: oops()
 } } }
-images_iconImage__P224.info = {"start":9062,"length":13275,"line":281,"column":4,"endLine":538,"endColumn":5,"fileName":"pxt_modules/core/icons.ts","functionName":"iconImage","argumentNames":["i"]}
+images_iconImage__P284.info = {"start":9049,"length":13275,"line":281,"column":4,"endLine":538,"endColumn":5,"fileName":"pxt_modules/core/icons.ts","functionName":"iconImage","argumentNames":["i"]}
 
-function images_iconImage__P224_mk(s) {
+function images_iconImage__P284_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: images_iconImage__P224, depth: s.depth + 1,
+        parent: s, fn: images_iconImage__P284, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -746,42 +743,31 @@ function images_iconImage__P224_mk(s) {
 
 
 
-function neopixel_Strip_showRainbow__P402(s) {
+function neopixel_Strip_showRainbow__P510(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    s.saturation___778 = undefined;
-    s.luminance___779 = undefined;
-    s.steps___780 = undefined;
-    s.direction___783 = undefined;
-    s.h1___786 = undefined;
-    s.h2___788 = undefined;
-    s.hDistCW___790 = undefined;
-    s.hStepCW___794 = undefined;
-    s.hDistCCW___799 = undefined;
-    s.hStepCCW___803 = undefined;
-    s.hStep___809 = undefined;
-    s.h1_100___824 = undefined;
-    s.s1___826 = undefined;
-    s.s2___828 = undefined;
-    s.sDist___830 = undefined;
-    s.sStep___833 = undefined;
-    s.s1_100___838 = undefined;
-    s.l1___840 = undefined;
-    s.l2___842 = undefined;
-    s.lDist___844 = undefined;
-    s.lStep___847 = undefined;
-    s.l1_100___852 = undefined;
-    s.i___868 = undefined;
-    s.h___872 = undefined;
-    s.s___880 = undefined;
-    s.l___887 = undefined;
+    s.steps___915 = undefined;
+    s.h1___921 = undefined;
+    s.h2___923 = undefined;
+    s.hDistCW___925 = undefined;
+    s.hStepCW___934 = undefined;
+    s.hDistCCW___940 = undefined;
+    s.hStepCCW___949 = undefined;
+    s.hStep___957 = undefined;
+    s.h1_100___975 = undefined;
+    s.sStep___986 = undefined;
+    s.lStep___1003 = undefined;
+    s.i___1030 = undefined;
+    s.h___1036 = undefined;
+    s.s___1046 = undefined;
+    s.l___1054 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -789,7 +775,7 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, neopixel_Strip__C400_VT)) failedCast(r0);
+    if (!checkSubtype(r0, neopixel_Strip__C508_VT)) failedCast(r0);
     r0 = s.arg0.fields["_length"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 <= 0);
@@ -803,94 +789,75 @@ switch (step) {
     s.arg1 = (r0);
     r0 = (s.arg2 >> 0);
     s.arg2 = (r0);
-    s.saturation___778 = (100);
-    s.luminance___779 = (50);
     r0 = s.arg0.fields["_length"];
-    s.steps___780 = (r0);
-    s.direction___783 = (0);
-    s.h1___786 = (s.arg1);
-    s.h2___788 = (s.arg2);
-    r0 = (s.h2___788 + 360);
+    s.steps___915 = (r0);
+    s.h1___921 = (s.arg1);
+    s.h2___923 = (s.arg2);
+    r0 = (s.h2___923 + 360);
     s.tmp_1 = r0;
-    r0 = (s.tmp_1 - s.h1___786);
+    r0 = (s.tmp_1 - s.h1___921);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 % 360);
-    s.hDistCW___790 = (r0);
-    r0 = (s.hDistCW___790 * 100);
+    s.hDistCW___925 = (r0);
+    r0 = (s.hDistCW___925 * 100);
     s.tmp_0 = r0;
-    r0 = pxsim.Math_.idiv(s.tmp_0, s.steps___780);
-    s.hStepCW___794 = (r0);
-    r0 = (s.h1___786 + 360);
+    r0 = pxsim.Math_.idiv(s.tmp_0, s.steps___915);
+    s.hStepCW___934 = (r0);
+    r0 = (s.h1___921 + 360);
     s.tmp_1 = r0;
-    r0 = (s.tmp_1 - s.h2___788);
+    r0 = (s.tmp_1 - s.h2___923);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 % 360);
-    s.hDistCCW___799 = (r0);
-    r0 = (s.hDistCCW___799 * 100);
+    s.hDistCCW___940 = (r0);
+    r0 = (s.hDistCCW___940 * 100);
     s.tmp_1 = r0;
     r0 = (0 - s.tmp_1);
     s.tmp_0 = r0;
-    r0 = pxsim.Math_.idiv(s.tmp_0, s.steps___780);
-    s.hStepCCW___803 = (r0);
-    r0 = (s.direction___783 === 0);
-    s.tmp_0 = r0;
-    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    r0 = pxsim.Math_.idiv(s.tmp_0, s.steps___915);
+    s.hStepCCW___949 = (r0);
+    r0 = pxsim_numops_toBoolDecr(true);
     if (!r0) { step = 3; continue; }
-    s.hStep___809 = (s.hStepCW___794);
+    s.hStep___957 = (s.hStepCW___934);
     { step = 8; continue; }
   case 3:
-    r0 = (s.direction___783 === 1);
-    s.tmp_0 = r0;
-    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    r0 = pxsim_numops_toBoolDecr(false);
     if (!r0) { step = 4; continue; }
-    s.hStep___809 = (s.hStepCCW___803);
+    s.hStep___957 = (s.hStepCCW___949);
     { step = 7; continue; }
   case 4:
-    r0 = (s.hDistCW___790 < s.hDistCCW___799);
+    r0 = (s.hDistCW___925 < s.hDistCCW___940);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
-    r0 = s.hStepCW___794;
+    r0 = s.hStepCW___934;
     { step = 6; continue; }
   case 5:
-    r0 = s.hStepCCW___803;
+    r0 = s.hStepCCW___949;
   case 6:
     // jmp value (already in r0)
     s.tmp_1 = r0;
-    s.hStep___809 = (s.tmp_1);
+    s.hStep___957 = (s.tmp_1);
   case 7:
   case 8:
-    r0 = (s.h1___786 * 100);
-    s.h1_100___824 = (r0);
-    s.s1___826 = (s.saturation___778);
-    s.s2___828 = (s.saturation___778);
-    r0 = (s.s2___828 - s.s1___826);
-    s.sDist___830 = (r0);
-    r0 = pxsim.Math_.idiv(s.sDist___830, s.steps___780);
-    s.sStep___833 = (r0);
-    r0 = (s.s1___826 * 100);
-    s.s1_100___838 = (r0);
-    s.l1___840 = (s.luminance___779);
-    s.l2___842 = (s.luminance___779);
-    r0 = (s.l2___842 - s.l1___840);
-    s.lDist___844 = (r0);
-    r0 = pxsim.Math_.idiv(s.lDist___844, s.steps___780);
-    s.lStep___847 = (r0);
-    r0 = (s.l1___840 * 100);
-    s.l1_100___852 = (r0);
-    r0 = (s.steps___780 === 1);
+    r0 = (s.h1___921 * 100);
+    s.h1_100___975 = (r0);
+    r0 = pxsim.Math_.idiv(0, s.steps___915);
+    s.sStep___986 = (r0);
+    r0 = pxsim.Math_.idiv(0, s.steps___915);
+    s.lStep___1003 = (r0);
+    r0 = (s.steps___915 === 1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
-    s.tmp_1 = neopixel_Strip_setPixelColor__P404_mk(s);
+    s.tmp_1 = neopixel_Strip_setPixelColor__P512_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_1.arg1 = 0;
-    s.tmp_2 = neopixel_hsl__P430_mk(s);
-    r0 = (s.h1___786 + s.hStep___809);
+    s.tmp_2 = neopixel_hsl__P538_mk(s);
+    r0 = (s.h1___921 + s.hStep___957);
     s.tmp_2.arg0 = r0;
-    r0 = (s.s1___826 + s.sStep___833);
+    r0 = (100 + s.sStep___986);
     s.tmp_2.arg1 = r0;
-    r0 = (s.l1___840 + s.lStep___847);
+    r0 = (50 + s.lStep___1003);
     s.tmp_2.arg2 = r0;
     s.pc = 15; return s.tmp_2;
   case 15:
@@ -901,13 +868,13 @@ switch (step) {
     r0 = s.retval;
     { step = 12; continue; }
   case 9:
-    s.tmp_0 = neopixel_Strip_setPixelColor__P404_mk(s);
+    s.tmp_0 = neopixel_Strip_setPixelColor__P512_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = 0;
-    s.tmp_1 = neopixel_hsl__P430_mk(s);
+    s.tmp_1 = neopixel_hsl__P538_mk(s);
     s.tmp_1.arg0 = s.arg1;
-    s.tmp_1.arg1 = s.saturation___778;
-    s.tmp_1.arg2 = s.luminance___779;
+    s.tmp_1.arg1 = 100;
+    s.tmp_1.arg2 = 50;
     s.pc = 17; return s.tmp_1;
   case 17:
     r0 = s.retval;
@@ -915,45 +882,43 @@ switch (step) {
     s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
-    s.i___868 = (1);
+    s.i___1030 = (1);
   case 10:
-    s.tmp_1 = r0 = s.i___868;
-    r0 = (s.steps___780 - 1);
+    s.tmp_1 = r0 = s.i___1030;
+    r0 = (s.steps___915 - 1);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 11; continue; }
-    s.tmp_5 = r0 = s.h1_100___824;
-    r0 = (s.i___868 * s.hStep___809);
+    s.tmp_5 = r0 = s.h1_100___975;
+    r0 = (s.i___1030 * s.hStep___957);
     s.tmp_6 = r0;
     r0 = (s.tmp_5 + s.tmp_6);
     s.tmp_4 = r0;
     r0 = pxsim.Math_.idiv(s.tmp_4, 100);
     s.tmp_3 = r0;
     r0 = (s.tmp_3 + 360);
-    s.h___872 = (r0);
-    s.tmp_1 = r0 = s.s1_100___838;
-    r0 = (s.i___868 * s.sStep___833);
-    s.tmp_2 = r0;
-    r0 = (s.tmp_1 + s.tmp_2);
+    s.h___1036 = (r0);
+    r0 = (s.i___1030 * s.sStep___986);
+    s.tmp_1 = r0;
+    r0 = (10000 + s.tmp_1);
     s.tmp_0 = r0;
     r0 = pxsim.Math_.idiv(s.tmp_0, 100);
-    s.s___880 = (r0);
-    s.tmp_1 = r0 = s.l1_100___852;
-    r0 = (s.i___868 * s.lStep___847);
-    s.tmp_2 = r0;
-    r0 = (s.tmp_1 + s.tmp_2);
+    s.s___1046 = (r0);
+    r0 = (s.i___1030 * s.lStep___1003);
+    s.tmp_1 = r0;
+    r0 = (5000 + s.tmp_1);
     s.tmp_0 = r0;
     r0 = pxsim.Math_.idiv(s.tmp_0, 100);
-    s.l___887 = (r0);
-    s.tmp_0 = neopixel_Strip_setPixelColor__P404_mk(s);
+    s.l___1054 = (r0);
+    s.tmp_0 = neopixel_Strip_setPixelColor__P512_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.i___868;
-    s.tmp_1 = neopixel_hsl__P430_mk(s);
-    s.tmp_1.arg0 = s.h___872;
-    s.tmp_1.arg1 = s.s___880;
-    s.tmp_1.arg2 = s.l___887;
+    s.tmp_0.arg1 = s.i___1030;
+    s.tmp_1 = neopixel_hsl__P538_mk(s);
+    s.tmp_1.arg0 = s.h___1036;
+    s.tmp_1.arg1 = s.s___1046;
+    s.tmp_1.arg2 = s.l___1054;
     s.pc = 19; return s.tmp_1;
   case 19:
     r0 = s.retval;
@@ -961,18 +926,18 @@ switch (step) {
     s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
-    r0 = (s.i___868 + 1);
-    s.i___868 = (r0);
+    r0 = (s.i___1030 + 1);
+    s.i___1030 = (r0);
     { step = 10; continue; }
   case 11:
-    s.tmp_0 = neopixel_Strip_setPixelColor__P404_mk(s);
+    s.tmp_0 = neopixel_Strip_setPixelColor__P512_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    r0 = (s.steps___780 - 1);
+    r0 = (s.steps___915 - 1);
     s.tmp_0.arg1 = r0;
-    s.tmp_1 = neopixel_hsl__P430_mk(s);
+    s.tmp_1 = neopixel_hsl__P538_mk(s);
     s.tmp_1.arg0 = s.arg2;
-    s.tmp_1.arg1 = s.saturation___778;
-    s.tmp_1.arg2 = s.luminance___779;
+    s.tmp_1.arg1 = 100;
+    s.tmp_1.arg2 = 50;
     s.pc = 21; return s.tmp_1;
   case 21:
     r0 = s.retval;
@@ -981,7 +946,7 @@ switch (step) {
   case 20:
     r0 = s.retval;
   case 12:
-    s.tmp_0 = neopixel_Strip_show__P408_mk(s);
+    s.tmp_0 = neopixel_Strip_show__P516_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.pc = 22; return s.tmp_0;
   case 22:
@@ -991,12 +956,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_Strip_showRainbow__P402.info = {"start":2016,"length":2263,"line":77,"column":8,"endLine":132,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"showRainbow","argumentNames":["this","startHue","endHue"]}
+neopixel_Strip_showRainbow__P510.info = {"start":2016,"length":2263,"line":77,"column":8,"endLine":132,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"showRainbow","argumentNames":["this","startHue","endHue"]}
 
-function neopixel_Strip_showRainbow__P402_mk(s) {
+function neopixel_Strip_showRainbow__P510_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_Strip_showRainbow__P402, depth: s.depth + 1,
+        parent: s, fn: neopixel_Strip_showRainbow__P510, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1005,32 +970,21 @@ function neopixel_Strip_showRainbow__P402_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  saturation___778: undefined,
-  luminance___779: undefined,
-  steps___780: undefined,
-  direction___783: undefined,
-  h1___786: undefined,
-  h2___788: undefined,
-  hDistCW___790: undefined,
-  hStepCW___794: undefined,
-  hDistCCW___799: undefined,
-  hStepCCW___803: undefined,
-  hStep___809: undefined,
-  h1_100___824: undefined,
-  s1___826: undefined,
-  s2___828: undefined,
-  sDist___830: undefined,
-  sStep___833: undefined,
-  s1_100___838: undefined,
-  l1___840: undefined,
-  l2___842: undefined,
-  lDist___844: undefined,
-  lStep___847: undefined,
-  l1_100___852: undefined,
-  i___868: undefined,
-  h___872: undefined,
-  s___880: undefined,
-  l___887: undefined,
+  steps___915: undefined,
+  h1___921: undefined,
+  h2___923: undefined,
+  hDistCW___925: undefined,
+  hStepCW___934: undefined,
+  hDistCCW___940: undefined,
+  hStepCCW___949: undefined,
+  hStep___957: undefined,
+  h1_100___975: undefined,
+  sStep___986: undefined,
+  lStep___1003: undefined,
+  i___1030: undefined,
+  h___1036: undefined,
+  s___1046: undefined,
+  l___1054: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -1040,28 +994,28 @@ function neopixel_Strip_showRainbow__P402_mk(s) {
 
 
 
-function neopixel_hsl__P430(s) {
+function neopixel_hsl__P538(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    s.c___932 = undefined;
-    s.h1___938 = undefined;
-    s.h2___942 = undefined;
-    s.temp___947 = undefined;
-    s.x___952 = undefined;
-    s.r____955 = undefined;
-    s.g____956 = undefined;
-    s.b____957 = undefined;
-    s.m___994 = undefined;
-    s.r___1001 = undefined;
-    s.g___1004 = undefined;
-    s.b___1007 = undefined;
+    s.c___1102 = undefined;
+    s.h1___1118 = undefined;
+    s.h2___1122 = undefined;
+    s.temp___1131 = undefined;
+    s.x___1142 = undefined;
+    s.r____1151 = undefined;
+    s.g____1152 = undefined;
+    s.b____1153 = undefined;
+    s.m___1196 = undefined;
+    s.r___1206 = undefined;
+    s.g___1210 = undefined;
+    s.b___1214 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -1076,7 +1030,7 @@ switch (step) {
     s.arg2 = (r0);
     r0 = (s.arg0 % 360);
     s.arg0 = (r0);
-    s.tmp_0 = Math_clamp__P155_mk(s);
+    s.tmp_0 = Math_clamp__P193_mk(s);
     s.tmp_0.arg0 = 0;
     s.tmp_0.arg1 = 99;
     s.tmp_0.arg2 = s.arg1;
@@ -1084,7 +1038,7 @@ switch (step) {
   case 13:
     r0 = s.retval;
     s.arg1 = (r0);
-    s.tmp_0 = Math_clamp__P155_mk(s);
+    s.tmp_0 = Math_clamp__P193_mk(s);
     s.tmp_0.arg0 = 0;
     s.tmp_0.arg1 = 99;
     s.tmp_0.arg2 = s.arg2;
@@ -1092,7 +1046,7 @@ switch (step) {
   case 14:
     r0 = s.retval;
     s.arg2 = (r0);
-    s.tmp_4 = Math_abs__P156_mk(s);
+    s.tmp_4 = Math_abs__P194_mk(s);
     r0 = (2 * s.arg2);
     s.tmp_5 = r0;
     r0 = (s.tmp_5 - 100);
@@ -1108,90 +1062,90 @@ switch (step) {
     r0 = (s.tmp_1 << 8);
     s.tmp_0 = r0;
     r0 = pxsim.Math_.idiv(s.tmp_0, 10000);
-    s.c___932 = (r0);
+    s.c___1102 = (r0);
     r0 = pxsim.Math_.idiv(s.arg0, 60);
-    s.h1___938 = (r0);
+    s.h1___1118 = (r0);
     s.tmp_2 = r0 = s.arg0;
-    r0 = (s.h1___938 * 60);
+    r0 = (s.h1___1118 * 60);
     s.tmp_3 = r0;
     r0 = (s.tmp_2 - s.tmp_3);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 * 256);
     s.tmp_0 = r0;
     r0 = pxsim.Math_.idiv(s.tmp_0, 60);
-    s.h2___942 = (r0);
-    s.tmp_0 = Math_abs__P156_mk(s);
-    r0 = (s.h1___938 % 2);
+    s.h2___1122 = (r0);
+    s.tmp_0 = Math_abs__P194_mk(s);
+    r0 = (s.h1___1118 % 2);
     s.tmp_3 = r0;
     r0 = (s.tmp_3 << 8);
     s.tmp_2 = r0;
-    r0 = (s.tmp_2 + s.h2___942);
+    r0 = (s.tmp_2 + s.h2___1122);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 - 256);
     s.tmp_0.arg0 = r0;
     s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
-    s.temp___947 = (r0);
-    s.tmp_1 = r0 = s.c___932;
-    r0 = (256 - s.temp___947);
+    s.temp___1131 = (r0);
+    s.tmp_1 = r0 = s.c___1102;
+    r0 = (256 - s.temp___1131);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 * s.tmp_2);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 >> 8);
-    s.x___952 = (r0);
-    r0 = (s.h1___938 == 0);
+    s.x___1142 = (r0);
+    r0 = (s.h1___1118 == 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
-    s.r____955 = (s.c___932);
-    s.g____956 = (s.x___952);
-    s.b____957 = (0);
+    s.r____1151 = (s.c___1102);
+    s.g____1152 = (s.x___1142);
+    s.b____1153 = (0);
     { step = 12; continue; }
   case 1:
-    r0 = (s.h1___938 == 1);
+    r0 = (s.h1___1118 == 1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
-    s.r____955 = (s.x___952);
-    s.g____956 = (s.c___932);
-    s.b____957 = (0);
+    s.r____1151 = (s.x___1142);
+    s.g____1152 = (s.c___1102);
+    s.b____1153 = (0);
     { step = 11; continue; }
   case 2:
-    r0 = (s.h1___938 == 2);
+    r0 = (s.h1___1118 == 2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    s.r____955 = (0);
-    s.g____956 = (s.c___932);
-    s.b____957 = (s.x___952);
+    s.r____1151 = (0);
+    s.g____1152 = (s.c___1102);
+    s.b____1153 = (s.x___1142);
     { step = 10; continue; }
   case 3:
-    r0 = (s.h1___938 == 3);
+    r0 = (s.h1___1118 == 3);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    s.r____955 = (0);
-    s.g____956 = (s.x___952);
-    s.b____957 = (s.c___932);
+    s.r____1151 = (0);
+    s.g____1152 = (s.x___1142);
+    s.b____1153 = (s.c___1102);
     { step = 9; continue; }
   case 4:
-    r0 = (s.h1___938 == 4);
+    r0 = (s.h1___1118 == 4);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
-    s.r____955 = (s.x___952);
-    s.g____956 = (0);
-    s.b____957 = (s.c___932);
+    s.r____1151 = (s.x___1142);
+    s.g____1152 = (0);
+    s.b____1153 = (s.c___1102);
     { step = 8; continue; }
   case 5:
-    r0 = (s.h1___938 == 5);
+    r0 = (s.h1___1118 == 5);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
-    s.r____955 = (s.c___932);
-    s.g____956 = (0);
-    s.b____957 = (s.x___952);
+    s.r____1151 = (s.c___1102);
+    s.g____1152 = (0);
+    s.b____1153 = (s.x___1142);
   case 6:
   case 7:
   case 8:
@@ -1205,32 +1159,32 @@ switch (step) {
     s.tmp_2 = r0;
     r0 = pxsim.Math_.idiv(s.tmp_2, 100);
     s.tmp_1 = r0;
-    r0 = (s.tmp_1 - s.c___932);
+    r0 = (s.tmp_1 - s.c___1102);
     s.tmp_0 = r0;
     r0 = pxsim.Math_.idiv(s.tmp_0, 2);
-    s.m___994 = (r0);
-    r0 = (s.r____955 + s.m___994);
-    s.r___1001 = (r0);
-    r0 = (s.g____956 + s.m___994);
-    s.g___1004 = (r0);
-    r0 = (s.b____957 + s.m___994);
-    s.b___1007 = (r0);
-    s.tmp_0 = neopixel_packRGB__P426_mk(s);
-    s.tmp_0.arg0 = s.r___1001;
-    s.tmp_0.arg1 = s.g___1004;
-    s.tmp_0.arg2 = s.b___1007;
+    s.m___1196 = (r0);
+    r0 = (s.r____1151 + s.m___1196);
+    s.r___1206 = (r0);
+    r0 = (s.g____1152 + s.m___1196);
+    s.g___1210 = (r0);
+    r0 = (s.b____1153 + s.m___1196);
+    s.b___1214 = (r0);
+    s.tmp_0 = neopixel_packRGB__P534_mk(s);
+    s.tmp_0.arg0 = s.r___1206;
+    s.tmp_0.arg1 = s.g___1210;
+    s.tmp_0.arg2 = s.b___1214;
     s.pc = 17; return s.tmp_0;
   case 17:
     r0 = s.retval;
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_hsl__P430.info = {"start":19227,"length":1240,"line":535,"column":4,"endLine":569,"endColumn":5,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"hsl","argumentNames":["h","s","l"]}
+neopixel_hsl__P538.info = {"start":19227,"length":1240,"line":535,"column":4,"endLine":569,"endColumn":5,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"hsl","argumentNames":["h","s","l"]}
 
-function neopixel_hsl__P430_mk(s) {
+function neopixel_hsl__P538_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_hsl__P430, depth: s.depth + 1,
+        parent: s, fn: neopixel_hsl__P538, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1238,18 +1192,18 @@ function neopixel_hsl__P430_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  c___932: undefined,
-  h1___938: undefined,
-  h2___942: undefined,
-  temp___947: undefined,
-  x___952: undefined,
-  r____955: undefined,
-  g____956: undefined,
-  b____957: undefined,
-  m___994: undefined,
-  r___1001: undefined,
-  g___1004: undefined,
-  b___1007: undefined,
+  c___1102: undefined,
+  h1___1118: undefined,
+  h2___1122: undefined,
+  temp___1131: undefined,
+  x___1142: undefined,
+  r____1151: undefined,
+  g____1152: undefined,
+  b____1153: undefined,
+  m___1196: undefined,
+  r___1206: undefined,
+  g___1210: undefined,
+  b___1214: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -1259,13 +1213,13 @@ function neopixel_hsl__P430_mk(s) {
 
 
 
-function neopixel_packRGB__P426(s) {
+function neopixel_packRGB__P534(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
@@ -1291,12 +1245,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_packRGB__P426.info = {"start":18515,"length":133,"line":512,"column":4,"endLine":514,"endColumn":5,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"packRGB","argumentNames":["a","b","c"]}
+neopixel_packRGB__P534.info = {"start":18515,"length":133,"line":512,"column":4,"endLine":514,"endColumn":5,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"packRGB","argumentNames":["a","b","c"]}
 
-function neopixel_packRGB__P426_mk(s) {
+function neopixel_packRGB__P534_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_packRGB__P426, depth: s.depth + 1,
+        parent: s, fn: neopixel_packRGB__P534, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1313,13 +1267,13 @@ function neopixel_packRGB__P426_mk(s) {
 
 
 
-function Math_abs__P156(s) {
+function Math_abs__P194(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
@@ -1342,12 +1296,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Math_abs__P156.info = {"start":9884,"length":77,"line":336,"column":4,"endLine":338,"endColumn":5,"fileName":"pxt_modules/core/pxt-helpers.ts","functionName":"abs","argumentNames":["x"]}
+Math_abs__P194.info = {"start":15106,"length":77,"line":511,"column":4,"endLine":513,"endColumn":5,"fileName":"pxt_modules/core/pxt-helpers.ts","functionName":"abs","argumentNames":["x"]}
 
-function Math_abs__P156_mk(s) {
+function Math_abs__P194_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Math_abs__P156, depth: s.depth + 1,
+        parent: s, fn: Math_abs__P194, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1358,13 +1312,13 @@ function Math_abs__P156_mk(s) {
 
 
 
-function Math_clamp__P155(s) {
+function Math_clamp__P193(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
@@ -1374,9 +1328,9 @@ switch (step) {
       s.arg2 = (s.lambdaArgs[2]);
       s.lambdaArgs = null;
     }
-    s.tmp_0 = Math_min__P159_mk(s);
+    s.tmp_0 = Math_min__P197_mk(s);
     s.tmp_0.arg0 = s.arg1;
-    s.tmp_1 = Math_max__P158_mk(s);
+    s.tmp_1 = Math_max__P196_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_1.arg1 = s.arg2;
     s.pc = 2; return s.tmp_1;
@@ -1389,12 +1343,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Math_clamp__P155.info = {"start":9454,"length":130,"line":327,"column":4,"endLine":329,"endColumn":5,"fileName":"pxt_modules/core/pxt-helpers.ts","functionName":"clamp","argumentNames":["min","max","value"]}
+Math_clamp__P193.info = {"start":14654,"length":130,"line":501,"column":4,"endLine":503,"endColumn":5,"fileName":"pxt_modules/core/pxt-helpers.ts","functionName":"clamp","argumentNames":["min","max","value"]}
 
-function Math_clamp__P155_mk(s) {
+function Math_clamp__P193_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Math_clamp__P155, depth: s.depth + 1,
+        parent: s, fn: Math_clamp__P193, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1407,13 +1361,13 @@ function Math_clamp__P155_mk(s) {
 
 
 
-function Math_max__P158(s) {
+function Math_max__P196(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
@@ -1435,12 +1389,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Math_max__P158.info = {"start":10331,"length":105,"line":353,"column":4,"endLine":356,"endColumn":5,"fileName":"pxt_modules/core/pxt-helpers.ts","functionName":"max","argumentNames":["a","b"]}
+Math_max__P196.info = {"start":15575,"length":105,"line":529,"column":4,"endLine":532,"endColumn":5,"fileName":"pxt_modules/core/pxt-helpers.ts","functionName":"max","argumentNames":["a","b"]}
 
-function Math_max__P158_mk(s) {
+function Math_max__P196_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Math_max__P158, depth: s.depth + 1,
+        parent: s, fn: Math_max__P196, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -1451,13 +1405,13 @@ function Math_max__P158_mk(s) {
 
 
 
-function Math_min__P159(s) {
+function Math_min__P197(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
@@ -1479,12 +1433,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Math_min__P159.info = {"start":10524,"length":105,"line":361,"column":4,"endLine":364,"endColumn":5,"fileName":"pxt_modules/core/pxt-helpers.ts","functionName":"min","argumentNames":["a","b"]}
+Math_min__P197.info = {"start":15790,"length":105,"line":538,"column":4,"endLine":541,"endColumn":5,"fileName":"pxt_modules/core/pxt-helpers.ts","functionName":"min","argumentNames":["a","b"]}
 
-function Math_min__P159_mk(s) {
+function Math_min__P197_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Math_min__P159, depth: s.depth + 1,
+        parent: s, fn: Math_min__P197, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -1495,13 +1449,13 @@ function Math_min__P159_mk(s) {
 
 
 
-function neopixel_Strip_setPixelColor__P404(s) {
+function neopixel_Strip_setPixelColor__P512(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
@@ -1512,8 +1466,8 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, neopixel_Strip__C400_VT)) failedCast(r0);
-    s.tmp_0 = neopixel_Strip_setPixelRGB__P421_mk(s);
+    if (!checkSubtype(r0, neopixel_Strip__C508_VT)) failedCast(r0);
+    s.tmp_0 = neopixel_Strip_setPixelRGB__P529_mk(s);
     s.tmp_0.arg0 = s.arg0;
     r0 = (s.arg1 >> 0);
     s.tmp_0.arg1 = r0;
@@ -1526,12 +1480,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_Strip_setPixelColor__P404.info = {"start":6138,"length":123,"line":182,"column":8,"endLine":184,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"setPixelColor","argumentNames":["this","pixeloffset","rgb"]}
+neopixel_Strip_setPixelColor__P512.info = {"start":6138,"length":123,"line":182,"column":8,"endLine":184,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"setPixelColor","argumentNames":["this","pixeloffset","rgb"]}
 
-function neopixel_Strip_setPixelColor__P404_mk(s) {
+function neopixel_Strip_setPixelColor__P512_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_Strip_setPixelColor__P404, depth: s.depth + 1,
+        parent: s, fn: neopixel_Strip_setPixelColor__P512, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -1543,21 +1497,21 @@ function neopixel_Strip_setPixelColor__P404_mk(s) {
 
 
 
-function neopixel_Strip_setPixelRGB__P421(s) {
+function neopixel_Strip_setPixelRGB__P529(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    s.stride___1058 = undefined;
-    s.red___1067 = undefined;
-    s.green___1070 = undefined;
-    s.blue___1073 = undefined;
-    s.br___1076 = undefined;
+    s.stride___1284 = undefined;
+    s.red___1297 = undefined;
+    s.green___1300 = undefined;
+    s.blue___1303 = undefined;
+    s.br___1306 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -1565,7 +1519,7 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, neopixel_Strip__C400_VT)) failedCast(r0);
+    if (!checkSubtype(r0, neopixel_Strip__C508_VT)) failedCast(r0);
     r0 = (s.arg1 < 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
@@ -1597,57 +1551,57 @@ switch (step) {
   case 6:
     // jmp value (already in r0)
     s.tmp_5 = r0;
-    s.stride___1058 = (s.tmp_5);
+    s.stride___1284 = (s.tmp_5);
     r0 = s.arg0.fields["start"];
     s.tmp_1 = r0;
     r0 = (s.arg1 + s.tmp_1);
     s.tmp_0 = r0;
-    r0 = (s.tmp_0 * s.stride___1058);
+    r0 = (s.tmp_0 * s.stride___1284);
     s.arg1 = (r0);
-    s.tmp_0 = neopixel_unpackR__P427_mk(s);
+    s.tmp_0 = neopixel_unpackR__P535_mk(s);
     s.tmp_0.arg0 = s.arg2;
     s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
-    s.red___1067 = (r0);
-    s.tmp_0 = neopixel_unpackG__P428_mk(s);
+    s.red___1297 = (r0);
+    s.tmp_0 = neopixel_unpackG__P536_mk(s);
     s.tmp_0.arg0 = s.arg2;
     s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    s.green___1070 = (r0);
-    s.tmp_0 = neopixel_unpackB__P429_mk(s);
+    s.green___1300 = (r0);
+    s.tmp_0 = neopixel_unpackB__P537_mk(s);
     s.tmp_0.arg0 = s.arg2;
     s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
-    s.blue___1073 = (r0);
+    s.blue___1303 = (r0);
     r0 = s.arg0.fields["brightness"];
-    s.br___1076 = (r0);
-    r0 = (s.br___1076 < 255);
+    s.br___1306 = (r0);
+    r0 = (s.br___1306 < 255);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
-    r0 = (s.red___1067 * s.br___1076);
+    r0 = (s.red___1297 * s.br___1306);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 >> 8);
-    s.red___1067 = (r0);
-    r0 = (s.green___1070 * s.br___1076);
+    s.red___1297 = (r0);
+    r0 = (s.green___1300 * s.br___1306);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 >> 8);
-    s.green___1070 = (r0);
-    r0 = (s.blue___1073 * s.br___1076);
+    s.green___1300 = (r0);
+    r0 = (s.blue___1303 * s.br___1306);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 >> 8);
-    s.blue___1073 = (r0);
+    s.blue___1303 = (r0);
   case 7:
   case 8:
-    s.tmp_0 = neopixel_Strip_setBufferRGB__P418_mk(s);
+    s.tmp_0 = neopixel_Strip_setBufferRGB__P526_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
-    s.tmp_0.arg2 = s.red___1067;
-    s.tmp_0.arg3 = s.green___1070;
-    s.tmp_0.arg4 = s.blue___1073;
+    s.tmp_0.arg2 = s.red___1297;
+    s.tmp_0.arg3 = s.green___1300;
+    s.tmp_0.arg4 = s.blue___1303;
     s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
@@ -1656,12 +1610,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_Strip_setPixelRGB__P421.info = {"start":15692,"length":683,"line":427,"column":8,"endLine":446,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"setPixelRGB","argumentNames":["this","pixeloffset","rgb"]}
+neopixel_Strip_setPixelRGB__P529.info = {"start":15692,"length":683,"line":427,"column":8,"endLine":446,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"setPixelRGB","argumentNames":["this","pixeloffset","rgb"]}
 
-function neopixel_Strip_setPixelRGB__P421_mk(s) {
+function neopixel_Strip_setPixelRGB__P529_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_Strip_setPixelRGB__P421, depth: s.depth + 1,
+        parent: s, fn: neopixel_Strip_setPixelRGB__P529, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1669,11 +1623,11 @@ function neopixel_Strip_setPixelRGB__P421_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  stride___1058: undefined,
-  red___1067: undefined,
-  green___1070: undefined,
-  blue___1073: undefined,
-  br___1076: undefined,
+  stride___1284: undefined,
+  red___1297: undefined,
+  green___1300: undefined,
+  blue___1303: undefined,
+  br___1306: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -1683,13 +1637,13 @@ function neopixel_Strip_setPixelRGB__P421_mk(s) {
 
 
 
-function neopixel_Strip_setBufferRGB__P418(s) {
+function neopixel_Strip_setBufferRGB__P526(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
@@ -1702,7 +1656,7 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, neopixel_Strip__C400_VT)) failedCast(r0);
+    if (!checkSubtype(r0, neopixel_Strip__C508_VT)) failedCast(r0);
     r0 = s.arg0.fields["_mode"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 === 2);
@@ -1741,12 +1695,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_Strip_setBufferRGB__P418.info = {"start":14176,"length":407,"line":384,"column":8,"endLine":393,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"setBufferRGB","argumentNames":["this","offset","red","green","blue"]}
+neopixel_Strip_setBufferRGB__P526.info = {"start":14176,"length":407,"line":384,"column":8,"endLine":393,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"setBufferRGB","argumentNames":["this","offset","red","green","blue"]}
 
-function neopixel_Strip_setBufferRGB__P418_mk(s) {
+function neopixel_Strip_setBufferRGB__P526_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_Strip_setBufferRGB__P418, depth: s.depth + 1,
+        parent: s, fn: neopixel_Strip_setBufferRGB__P526, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1763,35 +1717,35 @@ function neopixel_Strip_setBufferRGB__P418_mk(s) {
 
 
 
-function neopixel_unpackB__P429(s) {
+function neopixel_unpackB__P537(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    s.b___1140 = undefined;
+    s.b___1381 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = (s.arg0 & 255);
-    s.b___1140 = (r0);
-    r0 = s.b___1140;
+    s.b___1381 = (r0);
+    r0 = s.b___1381;
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_unpackB__P429.info = {"start":18860,"length":93,"line":523,"column":4,"endLine":526,"endColumn":5,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"unpackB","argumentNames":["rgb"]}
+neopixel_unpackB__P537.info = {"start":18860,"length":93,"line":523,"column":4,"endLine":526,"endColumn":5,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"unpackB","argumentNames":["rgb"]}
 
-function neopixel_unpackB__P429_mk(s) {
+function neopixel_unpackB__P537_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_unpackB__P429, depth: s.depth + 1,
+        parent: s, fn: neopixel_unpackB__P537, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  b___1140: undefined,
+  b___1381: undefined,
   arg0: undefined,
 } }
 
@@ -1799,17 +1753,17 @@ function neopixel_unpackB__P429_mk(s) {
 
 
 
-function neopixel_unpackG__P428(s) {
+function neopixel_unpackG__P536(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    s.g___1144 = undefined;
+    s.g___1387 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -1817,20 +1771,20 @@ switch (step) {
     r0 = (s.arg0 >> 8);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 & 255);
-    s.g___1144 = (r0);
-    r0 = s.g___1144;
+    s.g___1387 = (r0);
+    r0 = s.g___1387;
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_unpackG__P428.info = {"start":18757,"length":98,"line":519,"column":4,"endLine":522,"endColumn":5,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"unpackG","argumentNames":["rgb"]}
+neopixel_unpackG__P536.info = {"start":18757,"length":98,"line":519,"column":4,"endLine":522,"endColumn":5,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"unpackG","argumentNames":["rgb"]}
 
-function neopixel_unpackG__P428_mk(s) {
+function neopixel_unpackG__P536_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_unpackG__P428, depth: s.depth + 1,
+        parent: s, fn: neopixel_unpackG__P536, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  g___1144: undefined,
+  g___1387: undefined,
   arg0: undefined,
 } }
 
@@ -1838,17 +1792,17 @@ function neopixel_unpackG__P428_mk(s) {
 
 
 
-function neopixel_unpackR__P427(s) {
+function neopixel_unpackR__P535(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    s.r___1148 = undefined;
+    s.r___1394 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -1856,20 +1810,20 @@ switch (step) {
     r0 = (s.arg0 >> 16);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 & 255);
-    s.r___1148 = (r0);
-    r0 = s.r___1148;
+    s.r___1394 = (r0);
+    r0 = s.r___1394;
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_unpackR__P427.info = {"start":18653,"length":99,"line":515,"column":4,"endLine":518,"endColumn":5,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"unpackR","argumentNames":["rgb"]}
+neopixel_unpackR__P535.info = {"start":18653,"length":99,"line":515,"column":4,"endLine":518,"endColumn":5,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"unpackR","argumentNames":["rgb"]}
 
-function neopixel_unpackR__P427_mk(s) {
+function neopixel_unpackR__P535_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_unpackR__P427, depth: s.depth + 1,
+        parent: s, fn: neopixel_unpackR__P535, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  r___1148: undefined,
+  r___1394: undefined,
   arg0: undefined,
 } }
 
@@ -1877,26 +1831,26 @@ function neopixel_unpackR__P427_mk(s) {
 
 
 
-function neopixel_create__P423(s) {
+function neopixel_create__P531(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
-    s.strip___1154 = undefined;
-    s.stride___1157 = undefined;
+    s.strip___1403 = undefined;
+    s.stride___1406 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.arg2 = (s.lambdaArgs[2]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkClassInstance(neopixel_Strip__C400_VT);
-    s.strip___1154 = (r0);
+    r0 = pxsim_pxtcore_mkClassInstance(neopixel_Strip__C508_VT);
+    s.strip___1403 = (r0);
     r0 = (s.arg2 === 1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
@@ -1908,45 +1862,45 @@ switch (step) {
   case 2:
     // jmp value (already in r0)
     s.tmp_1 = r0;
-    s.stride___1157 = (s.tmp_1);
-    s.tmp_0 = r0 = s.strip___1154;
-    r0 = (s.arg1 * s.stride___1157);
+    s.stride___1406 = (s.tmp_1);
+    s.tmp_0 = r0 = s.strip___1403;
+    r0 = (s.arg1 * s.stride___1406);
     s.tmp_2 = r0;
     r0 = pxsim.pins.createBuffer(s.tmp_2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["buf"] = (s.tmp_1);
-    r0 = (s.strip___1154).fields["start"] = (0);
-    r0 = (s.strip___1154).fields["_length"] = (s.arg1);
-    r0 = (s.strip___1154).fields["_mode"] = (s.arg2);
-    r0 = (s.strip___1154).fields["_matrixWidth"] = (0);
-    s.tmp_0 = neopixel_Strip_setBrightness__P411_mk(s);
-    s.tmp_0.arg0 = s.strip___1154;
+    r0 = (s.strip___1403).fields["start"] = (0);
+    r0 = (s.strip___1403).fields["_length"] = (s.arg1);
+    r0 = (s.strip___1403).fields["_mode"] = (s.arg2);
+    r0 = (s.strip___1403).fields["_matrixWidth"] = (0);
+    s.tmp_0 = neopixel_Strip_setBrightness__P519_mk(s);
+    s.tmp_0.arg0 = s.strip___1403;
     s.tmp_0.arg1 = 128;
     s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    s.tmp_0 = neopixel_Strip_setPin__P416_mk(s);
-    s.tmp_0.arg0 = s.strip___1154;
+    s.tmp_0 = neopixel_Strip_setPin__P524_mk(s);
+    s.tmp_0.arg0 = s.strip___1403;
     s.tmp_0.arg1 = s.arg0;
     s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
-    r0 = s.strip___1154;
+    r0 = s.strip___1403;
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_create__P423.info = {"start":17299,"length":437,"line":476,"column":4,"endLine":487,"endColumn":5,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"create","argumentNames":["pin","numleds","mode"]}
+neopixel_create__P531.info = {"start":17299,"length":437,"line":476,"column":4,"endLine":487,"endColumn":5,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"create","argumentNames":["pin","numleds","mode"]}
 
-function neopixel_create__P423_mk(s) {
+function neopixel_create__P531_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_create__P423, depth: s.depth + 1,
+        parent: s, fn: neopixel_create__P531, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  strip___1154: undefined,
-  stride___1157: undefined,
+  strip___1403: undefined,
+  stride___1406: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -1956,13 +1910,13 @@ function neopixel_create__P423_mk(s) {
 
 
 
-function neopixel_Strip_setPin__P416(s) {
+function neopixel_Strip_setPin__P524(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
@@ -1972,7 +1926,7 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, neopixel_Strip__C400_VT)) failedCast(r0);
+    if (!checkSubtype(r0, neopixel_Strip__C508_VT)) failedCast(r0);
     r0 = (s.arg0).fields["pin"] = (s.arg1);
     r0 = s.arg0.fields["pin"];
     s.tmp_0 = r0;
@@ -1981,12 +1935,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_Strip_setPin__P416.info = {"start":13228,"length":176,"line":359,"column":8,"endLine":363,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"setPin","argumentNames":["this","pin"]}
+neopixel_Strip_setPin__P524.info = {"start":13228,"length":176,"line":359,"column":8,"endLine":363,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"setPin","argumentNames":["this","pin"]}
 
-function neopixel_Strip_setPin__P416_mk(s) {
+function neopixel_Strip_setPin__P524_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_Strip_setPin__P416, depth: s.depth + 1,
+        parent: s, fn: neopixel_Strip_setPin__P524, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -1997,13 +1951,13 @@ function neopixel_Strip_setPin__P416_mk(s) {
 
 
 
-function neopixel_Strip_setBrightness__P411(s) {
+function neopixel_Strip_setBrightness__P519(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
 
 while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
 switch (step) {
   case 0:
 
@@ -2013,7 +1967,7 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, neopixel_Strip__C400_VT)) failedCast(r0);
+    if (!checkSubtype(r0, neopixel_Strip__C508_VT)) failedCast(r0);
     s.tmp_0 = r0 = s.arg0;
     r0 = (s.arg1 & 255);
     s.tmp_1 = r0;
@@ -2022,12 +1976,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-neopixel_Strip_setBrightness__P411.info = {"start":9588,"length":100,"line":272,"column":8,"endLine":274,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"setBrightness","argumentNames":["this","brightness"]}
+neopixel_Strip_setBrightness__P519.info = {"start":9588,"length":100,"line":272,"column":8,"endLine":274,"endColumn":9,"fileName":"pxt_modules/neopixel/neopixel.ts","functionName":"setBrightness","argumentNames":["this","brightness"]}
 
-function neopixel_Strip_setBrightness__P411_mk(s) {
+function neopixel_Strip_setBrightness__P519_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neopixel_Strip_setBrightness__P411, depth: s.depth + 1,
+        parent: s, fn: neopixel_Strip_setBrightness__P519, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -2038,46 +1992,12 @@ function neopixel_Strip_setBrightness__P411_mk(s) {
 
 
 
-
-function Fx8__P376(s) {
-let r0 = s.r0, step = s.pc;
-s.pc = -1;
-
-
-while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0)) return null;
-switch (step) {
-  case 0:
-
-    if (s.lambdaArgs) {
-      s.arg0 = (s.lambdaArgs[0]);
-      s.lambdaArgs = null;
-    }
-    r0 = (s.arg0 * 256);
-    s.tmp_0 = r0;
-    r0 = (s.tmp_0 | 0);
-    return leave(s, r0)
-  default: oops()
-} } }
-Fx8__P376.info = {"start":42,"length":68,"line":4,"column":0,"endLine":6,"endColumn":1,"fileName":"pxt_modules/core/fixed.ts","functionName":"Fx8","argumentNames":["v"]}
-
-function Fx8__P376_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: Fx8__P376, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  tmp_0: undefined,
-  arg0: undefined,
-} }
-
-
-
-
-const neopixel_Strip__C400_VT = mkVTable({
+const neopixel_Strip__C508_VT = mkVTable({
   name: "Strip",
   numFields: 7,
   classNo: 16,
   lastSubtypeNo: 16,
+  maxBgInstances: null,
   methods: {
   },
   iface: {
@@ -2095,18 +2015,18 @@ const neopixel_Strip__C400_VT = mkVTable({
     "set/_mode": null,
     "_matrixWidth": null,
     "set/_matrixWidth": null,
-    "showRainbow": neopixel_Strip_showRainbow__P402,
-    "setPixelColor": neopixel_Strip_setPixelColor__P404,
-    "show": neopixel_Strip_show__P408,
-    "setBrightness": neopixel_Strip_setBrightness__P411,
-    "rotate": neopixel_Strip_rotate__P415,
-    "setPin": neopixel_Strip_setPin__P416,
-    "setBufferRGB": neopixel_Strip_setBufferRGB__P418,
-    "setPixelRGB": neopixel_Strip_setPixelRGB__P421,
+    "showRainbow": neopixel_Strip_showRainbow__P510,
+    "setPixelColor": neopixel_Strip_setPixelColor__P512,
+    "show": neopixel_Strip_show__P516,
+    "setBrightness": neopixel_Strip_setBrightness__P519,
+    "rotate": neopixel_Strip_rotate__P523,
+    "setPin": neopixel_Strip_setPin__P524,
+    "setBufferRGB": neopixel_Strip_setBufferRGB__P526,
+    "setPixelRGB": neopixel_Strip_setPixelRGB__P529,
   },
 });
 
-const breakpoints = setupDebugger(1, ["strip___451","STM8_ADDRESSS___431"])
+const breakpoints = setupDebugger(1, ["strip___560"])
 
 return _main___P1
 })

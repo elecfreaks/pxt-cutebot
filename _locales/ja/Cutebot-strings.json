@@ -26,7 +26,6 @@
   "cuteBot.forward|block": "フルスピードで前進",
   "cuteBot.motors|block": "左タイヤを %lspeed\\%の速さ、|右タイヤを %rspeed\\%の速さで回す",
   "cuteBot.moveTime|block": "%dir 向きに%speed\\% の速さで %time 秒動かす",
-  "cuteBot.onPressEvent|block": "|%btn| ボタンが押されたとき",
   "cuteBot.setServo|block": "サーボ %servo の角度を %angle °にする",
   "cuteBot.singleheadlights|block": "%light のヘッドライトを 赤:%r 緑:%g 青:%b で点灯する",
   "cuteBot.stopcar|block": "動きを止める",

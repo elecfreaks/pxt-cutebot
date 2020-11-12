@@ -18,7 +18,6 @@
   "cuteBot.moveTime|param|dir": "Driving direction, eg: Direction.forward",
   "cuteBot.moveTime|param|speed": "Running speed, eg: 50",
   "cuteBot.moveTime|param|time": "Travel time, eg: 5",
-  "cuteBot.onPressEvent": "button pushed.",
   "cuteBot.setServo": "TODO: Set the angle of servo.",
   "cuteBot.setServo|param|Servo": "ServoList , eg: cuteBot.ServoList.S1",
   "cuteBot.setServo|param|angle": "angle of servo, eg: 90",

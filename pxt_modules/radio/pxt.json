@@ -1,0 +1,29 @@
+{
+    "name": "radio",
+    "description": "The radio services",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "shims.d.ts",
+        "enums.d.ts",
+        "radio.cpp",
+        "radio.ts",
+        "targetoverrides.ts"
+    ],
+    "public": true,
+    "targetVersions": {
+        "target": "2.3.12"
+    },
+    "yotta": {
+        "config": {
+            "microbit-dal": {
+                "bluetooth": {
+                    "enabled": 0
+                }
+            }
+        }
+    },
+    "icon": "/static/libs/radio.png"
+}

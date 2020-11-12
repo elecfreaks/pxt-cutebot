@@ -26,7 +26,6 @@
   "cuteBot.forward|block": "全速前进",
   "cuteBot.motors|block": "设置左轮速度为 %lspeed\\% |右轮速度为 %rspeed\\%",
   "cuteBot.moveTime|block": "向 %dir 以速度 %speed\\% 持续 %time 秒",
-  "cuteBot.onPressEvent|block": "当红外遥控器 |%btn| 键按下时",
   "cuteBot.setServo|block": "设置舵机 %servo 的角度为 %angle °",
   "cuteBot.singleheadlights|block": "设置LED车头灯 %light 颜色为 R:%r G:%g B:%b",
   "cuteBot.stopcar|block": "立刻停车",
