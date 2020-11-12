@@ -10,8 +10,8 @@
     "files": [
         "README.md",
         "cutebot.ts",
-        "_locales/zh/Cutebot-strings.json",
-        "_locales/zh/Cutebot-jsdoc-strings.json",
+        "_locales/zh-CN/Cutebot-strings.json",
+        "_locales/zh-CN/Cutebot-jsdoc-strings.json"
         "_locales/ja/Cutebot-strings.json",
         "_locales/ja/Cutebot-jsdoc-strings.json"
     ],
