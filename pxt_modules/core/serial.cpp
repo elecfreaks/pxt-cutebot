@@ -3,6 +3,7 @@
 #define MICROBIT_SERIAL_READ_BUFFER_LENGTH 64
 
 // make sure USB_TX and USB_RX don't overlap with other pin ids
+// also, 1001,1002 need to be kept in sync with getPin() function
 enum SerialPin {
     P0 = MICROBIT_ID_IO_P0,
     P1 = MICROBIT_ID_IO_P1,
@@ -40,21 +41,6 @@ enum BaudRate {
   BaudRate2400 = 2400,
   //% block=1200
   BaudRate1200 = 1200
-};
-
-enum Delimiters {
-    //% block="new line"
-    NewLine = 1,
-    //% block=","
-    Comma = 2,
-    //% block="$"
-    Dollar = 3,
-    //% block=":"
-    Colon = 4,
-    //% block="."
-    Fullstop = 5,
-    //% block="#"
-    Hash = 6,
 };
 
 //% weight=2 color=#002050 icon="\uf287"
@@ -123,34 +109,41 @@ namespace serial {
     }
 
     /**
-    * Read multiple characters from the receive buffer. Pause until enough characters are present.
-    * @param length default buffer length, eg: 64
+    * Read multiple characters from the receive buffer. 
+    * If length is positive, pauses until enough characters are present.
+    * @param length default buffer length
     */
     //% blockId=serial_readbuffer block="serial|read buffer %length"
     //% help=serial/read-buffer advanced=true weight=5
     Buffer readBuffer(int length) {
-      if (length <= 0)
-        length = MICROBIT_SERIAL_READ_BUFFER_LENGTH;
-
-      auto buf = mkBuffer(NULL, length);
-      int read = uBit.serial.read(buf->data, buf->length);
-      if (read != length) {
-        auto prev = buf;
-        buf = mkBuffer(buf->data, read);
-        decrRC(prev);
+      auto mode = SYNC_SLEEP;
+      if (length <= 0) {
+        length = uBit.serial.getRxBufferSize();
+        mode = ASYNC;
       }
 
-      return buf;
+      auto buf = mkBuffer(NULL, length);
+      auto res = buf;
+      registerGCObj(buf); // make sure buffer is pinned, while we wait for data
+      int read = uBit.serial.read(buf->data, buf->length, mode);
+      if (read != length) {
+        res = mkBuffer(buf->data, read);
+      }
+      unregisterGCObj(buf);
+
+      return res;
     }
 
     bool tryResolvePin(SerialPin p, PinName& name) {
       switch(p) {
+#if !MICROBIT_CODAL
         case SerialPin::USB_TX: name = USBTX; return true;
         case SerialPin::USB_RX: name = USBRX; return true;
+#endif
         default: 
           auto pin = getPin(p); 
           if (NULL != pin) {
-            name = pin->name;
+            name = (PinName)pin->name;
             return true;
           }
       }
@@ -173,12 +166,35 @@ namespace serial {
     //% rx.fieldOptions.tooltips="false"
     //% blockGap=8
     void redirect(SerialPin tx, SerialPin rx, BaudRate rate) {
+#if MICROBIT_CODAL
+      if (getPin(tx) && getPin(rx))
+        uBit.serial.redirect(*getPin(tx), *getPin(rx));
+      uBit.serial.setBaud(rate);
+#else
       PinName txn;
       PinName rxn;
       if (tryResolvePin(tx, txn) && tryResolvePin(rx, rxn))
         uBit.serial.redirect(txn, rxn);
       uBit.serial.baud((int)rate);
+#endif
     }
+
+    /**
+    Set the baud rate of the serial port
+    */
+    //% weight=10
+    //% blockId=serial_setbaudrate block="serial|set baud rate %rate"
+    //% blockGap=8 inlineInputMode=inline
+    //% help=serial/set-baud-rate
+    //% group="Configuration" advanced=true
+    void setBaudRate(BaudRate rate) {
+#if MICROBIT_CODAL
+      uBit.serial.setBaud(rate);
+#else
+      uBit.serial.baud((int)rate);
+#endif
+    }
+
 
     /**
     * Direct the serial input and output to use the USB connection.
@@ -186,8 +202,13 @@ namespace serial {
     //% weight=9 help=serial/redirect-to-usb
     //% blockId=serial_redirect_to_usb block="serial|redirect to USB"
     void redirectToUSB() {
+#if MICROBIT_CODAL
+      uBit.serial.redirect(uBit.io.usbTx, uBit.io.usbRx);
+      uBit.serial.setBaud(115200);
+#else
       uBit.serial.redirect(USBTX, USBRX);
       uBit.serial.baud(115200);
+#endif
     }
 
     /**

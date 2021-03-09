@@ -17,6 +17,8 @@
         "core.cpp",
         "pxt-helpers.ts",
         "helpers.ts",
+        "pxt-python.d.ts",
+        "pxt-python-helpers.ts",
         "pinscompat.ts",
         "configkeys.h",
         "gc.cpp",
@@ -31,10 +33,13 @@
         "gestures.jres",
         "control.ts",
         "control.cpp",
+        "interval.ts",
+        "gcstats.ts",
         "console.ts",
         "game.ts",
         "led.cpp",
         "led.ts",
+        "music.cpp",
         "music.ts",
         "melodies.ts",
         "pins.cpp",
@@ -43,25 +48,61 @@
         "serial.ts",
         "buffer.cpp",
         "buffer.ts",
+        "json.ts",
+        "poll.ts",
+        "controlmessage.ts",
         "pxtparts.json",
         "advmath.cpp",
         "trig.cpp",
         "fixed.ts",
         "templates.ts",
+        "sendbuffer.s",
+        "sendbuffernrf52.s",
+        "sendbufferbrightness.s",
+        "light.cpp",
+        "logo.cpp",
+        "touchmode.cpp",
+        "soundexpressions.ts",
+        "soundexpressions.cpp",
         "parts/speaker.svg",
         "parts/headphone.svg"
     ],
-    "testFiles": [
-        "test.ts"
-    ],
+    "testFiles": [],
     "public": true,
     "targetVersions": {
-        "target": "2.3.12"
+        "target": "3.1.57",
+        "pxt": "6.9.25"
+    },
+    "dalDTS": {
+        "compileServiceVariant": "mbcodal",
+        "includeDirs": [
+            "libraries/codal-core/inc",
+            "libraries/codal-microbit-v2/inc",
+            "libraries/codal-microbit-v2/model",
+            "libraries/codal-microbit-v2/inc/compat",
+            "pxtapp"
+        ],
+        "excludePrefix": [
+            "USB_",
+            "REQUEST_",
+            "LIS3DH_",
+            "FXOS8700_",
+            "MMA8",
+            "LSM303_",
+            "MAG_",
+            "MPU6050_",
+            "REF_TAG_",
+            "HF2_",
+            "PXT_REF_TAG_",
+            "MS_",
+            "SCSI_"
+        ]
     },
     "yotta": {
         "config": {
             "microbit-dal": {
-                "fiber_user_data": 1
+                "fiber_user_data": 1,
+                "pxt": 1
             }
         },
         "optionalConfig": {

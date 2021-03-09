@@ -145,7 +145,7 @@ void waitForEvent(int id, int event);
 unsigned afterProgramPage();
 //%
 void dumpDmesg();
-uint32_t hash_fnv1a(const void *data, unsigned len);
+uint32_t hash_fnv1(const void *data, unsigned len);
 
 // also defined DMESG macro
 // end
@@ -273,6 +273,9 @@ typedef enum {
     PANIC_SETTINGS_SECRET_MISSING = 922,
     PANIC_DELETE_ON_CLASS = 923,
     PANIC_OUT_OF_TIMERS = 924,
+    PANIC_JACDAC = 925,
+    PANIC_MICROPHONE_MISSING = 926,
+    PANIC_VARIANT_NOT_SUPPORTED = 927,
 
     PANIC_CAST_FIRST = 980,
     PANIC_CAST_FROM_UNDEFINED = 980,
@@ -362,7 +365,7 @@ bool eq_bool(TValue a, TValue b);
 bool eqq_bool(TValue a, TValue b);
 
 //%
-void failedCast(TValue v);
+void failedCast(TValue v, void *addr = NULL);
 //%
 void missingProperty(TValue v);
 
@@ -490,20 +493,16 @@ extern const VTable RefAction_vtable;
 
 #define PXT_VTABLE_TO_INT(vt) ((uintptr_t)(vt))
 
-// allocate 1M of heap on iOS
-#define PXT_IOS_HEAP_ALLOC_BITS 20
+// allocate 1M of heap on VM
+#define PXT_VM_HEAP_ALLOC_BITS 20
 
-#ifdef PXT_IOS
+#ifdef PXT_VM
 extern uint8_t *gcBase;
 #endif
 
 inline bool isReadOnly(TValue v) {
-#ifdef PXT64
-#ifdef PXT_IOS
-    return !isPointer(v) || (((uintptr_t)v - (uintptr_t)gcBase) >> PXT_IOS_HEAP_ALLOC_BITS) != 0;
-#else
-    return !isPointer(v) || !((uintptr_t)v >> 37);
-#endif
+#ifdef PXT_VM
+    return !isPointer(v) || (((uintptr_t)v - (uintptr_t)gcBase) >> PXT_VM_HEAP_ALLOC_BITS) != 0;
 #else
     return isTagged(v) || !((uintptr_t)v >> 28);
 #endif
@@ -667,7 +666,7 @@ class RefAction : public RefObject {
     uint16_t numArgs;
 #ifdef PXT_VM
     uint16_t initialLen;
-    uint16_t reserved;
+    uint16_t flags;
 #endif
     ActionCB func; // The function pointer
     // fields[] contain captured locals
@@ -905,7 +904,7 @@ enum class NumberFormat {
 // this will, unlike mkStringCore, UTF8-canonicalize the data
 String mkString(const char *data, int len = -1);
 // data can be NULL in both cases
-Buffer mkBuffer(const uint8_t *data, int len);
+Buffer mkBuffer(const void *data, int len);
 String mkStringCore(const char *data, int len = -1);
 
 TNumber getNumberCore(uint8_t *buf, int size, NumberFormat format);
@@ -992,7 +991,10 @@ void *gcAllocate(int numbytes);
 void *gcAllocateArray(int numbytes);
 extern "C" void *app_alloc(int numbytes);
 extern "C" void *app_free(void *ptr);
+extern "C" void *app_alloc_at(void *at, int numbytes);
 void gcPreAllocateBlock(uint32_t sz);
+
+int redirectSamples(int16_t *dst, int numsamples, int samplerate);
 
 #ifdef PXT64
 #define TOWORDS(bytes) (((bytes) + 7) >> 3)
@@ -1077,7 +1079,7 @@ TValue mapGetByString(RefMap *map, String key);
 int lookupMapKey(String key);
 //%
 TValue mapGet(RefMap *map, unsigned key);
-//%
+//% expose
 void mapSetByString(RefMap *map, String key, TValue val);
 //%
 void mapSet(RefMap *map, unsigned key, TValue val);

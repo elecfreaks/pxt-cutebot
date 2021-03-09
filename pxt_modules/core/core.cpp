@@ -325,7 +325,7 @@ uint32_t toRealUTF8(String str, uint8_t *dst) {
 }
 #endif
 
-Buffer mkBuffer(const uint8_t *data, int len) {
+Buffer mkBuffer(const void *data, int len) {
     if (len <= 0 && !inGCPrealloc())
         return (Buffer)emptyBuffer;
     Buffer r = new (gcAllocate(sizeof(BoxedBuffer) + len)) BoxedBuffer();
@@ -345,7 +345,7 @@ void seedRandom(unsigned seed) {
     random_value = seed;
 }
 
-//%
+//% expose
 void seedAddRandom(unsigned seed) {
     random_value ^= 0xCA2557CB * seed;
 }
@@ -561,22 +561,22 @@ int length(String s) {
 }
 
 #define isspace(c) ((c) == ' ')
+#define iswhitespace(c) ((c) == 0x09 || (c) == 0x0B || (c) == 0x0C || (c) == 0x20 || (c) == 0xA0 || (c) == 0x0A || (c) == 0x0D)
 
 NUMBER mystrtod(const char *p, char **endp) {
-    while (isspace(*p))
+    while (iswhitespace(*p))
         p++;
     NUMBER m = 1;
     NUMBER v = 0;
     int dot = 0;
+    int hasDigit = 0;
     if (*p == '+')
         p++;
     if (*p == '-') {
         m = -1;
         p++;
     }
-    if (*p == '0' && (p[1] | 0x20) == 'x') {
-        return m * strtol(p, endp, 16);
-    }
+
     while (*p) {
         int c = *p - '0';
         if (0 <= c && c <= 9) {
@@ -584,15 +584,12 @@ NUMBER mystrtod(const char *p, char **endp) {
             v += c;
             if (dot)
                 m /= 10;
+            hasDigit = 1;
         } else if (!dot && *p == '.') {
             dot = 1;
-        } else if (*p == 'e' || *p == 'E') {
-            break;
+        } else if (!hasDigit) {
+            return NAN;
         } else {
-            while (isspace(*p))
-                p++;
-            if (*p)
-                return NAN;
             break;
         }
         p++;
@@ -600,7 +597,7 @@ NUMBER mystrtod(const char *p, char **endp) {
 
     v *= m;
 
-    if (*p) {
+    if (*p == 'e' || *p == 'E') {
         p++;
         int pw = (int)strtol(p, endp, 10);
         v *= p10(pw);
@@ -617,9 +614,7 @@ TNumber toNumber(String s) {
     char *endptr;
     auto data = s->getUTF8Data();
     NUMBER v = mystrtod(data, &endptr);
-    if (endptr != data + s->getUTF8Size())
-        v = NAN;
-    else if (v == 0.0 || v == -0.0) {
+    if (v == 0.0 || v == -0.0) {
         // nothing
     } else if (!isnormal(v))
         v = NAN;
@@ -755,7 +750,11 @@ NUMBER toDouble(TNumber v) {
 }
 
 float toFloat(TNumber v) {
-    // TODO optimize?
+    if (v == TAG_NAN || v == TAG_UNDEFINED)
+        return NAN;
+    // optimize for the int case - this will avoid software conversion when FPU is present
+    if (isTagged(v))
+        return toInt(v);
     return (float)toDouble(v);
 }
 
@@ -1889,8 +1888,8 @@ PRIM_VTABLE(number, ValType::Number, BoxedNumber, 0)
 PRIM_VTABLE(buffer, ValType::Object, BoxedBuffer, p->length)
 // PRIM_VTABLE(action, ValType::Function, RefAction, )
 
-void failedCast(TValue v) {
-    DMESG("failed type check for %p", v);
+void failedCast(TValue v, void *addr) {
+    DMESG("failed type check for %p @%p", v, addr);
     auto vt = getAnyVTable(v);
     if (vt) {
         DMESG("VT %p - objtype %d classNo %d", vt, vt->objectType, vt->classNo);
@@ -1989,8 +1988,11 @@ void endTry() {
 void throwValue(TValue v) {
     auto ctx = PXT_EXN_CTX();
     auto f = ctx->tryFrame;
-    if (!f)
+    if (!f) {
+        DMESG("unhandled exception, value:");
+        anyPrint(v);
         target_panic(PANIC_UNHANDLED_EXCEPTION);
+    }
     ctx->tryFrame = f->parent;
     TryFrame copy = *f;
     app_free(f);
@@ -2016,13 +2018,18 @@ void endFinally() {
     throwValue(getThrownValue());
 }
 
-// https://tools.ietf.org/html/draft-eastlake-fnv-14#section-3
-uint32_t hash_fnv1a(const void *data, unsigned len) {
+// https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+uint32_t hash_fnv1(const void *data, unsigned len) {
     const uint8_t *d = (const uint8_t *)data;
     uint32_t h = 0x811c9dc5;
     while (len--)
         h = (h * 0x1000193) ^ *d++;
     return h;
+}
+
+// redefined in melody.cpp
+__attribute__((weak)) int redirectSamples(int16_t *dst, int numsamples, int samplerate) {
+    return 0;
 }
 
 } // namespace pxt
