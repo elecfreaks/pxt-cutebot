@@ -441,6 +441,26 @@ const STM8_ADDRESSS = 0x10
             pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
         }
     }
+    //% shim=IRv2::irCode
+    function irCode(): number {
+            return 0;
+    }
+    /**
+     * 
+     * @param button IR controller button
+     * @param handler handler
+     */
+    //% weight=25
+    //% blockId=IR_callbackUser block="On IR button %button Pressed"
+    export function IR_callbackUser(button: IRButton, handler: () => void) {
+        control.onEvent(98, button, handler)
+        control.inBackground(() => {
+            while (true) {
+                control.raiseEvent(98, irCode()&0x00ff, EventCreationMode.CreateAndFire)
+                basic.pause(20)
+            }
+        })
+    }
     function initEvents(): void {
         if (_initEvents) {
             pins.setEvents(DigitalPin.P13, PinEventType.Edge);
