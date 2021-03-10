@@ -473,7 +473,7 @@ const STM8_ADDRESSS = 0x10
             pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
         }
     }
-    //% shim=maqueenIRV2::irCode
+    //% shim=IRV2::irCode
     function irCode(): number {
         return 0;
     }

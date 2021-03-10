@@ -1,5 +1,5 @@
 // Auto-generated. Do not edit.
-declare namespace maqueenIRV2 {
+declare namespace IRV2 {
 }
 
 // Auto-generated. Do not edit. Really.
