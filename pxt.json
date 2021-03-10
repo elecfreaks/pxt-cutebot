@@ -4,12 +4,14 @@
     "description": "ELECFREAKS cutebot car",
     "license": "MIT",
     "dependencies": {
-        "core": "*",
-        "neopixel": "github:elecfreaks/pxt-neopixel#v0.6.17"
+        "core": "*"
     },
     "files": [
         "README.md",
         "cutebot.ts",
+        "IR.cpp",
+        "shims.d.ts",
+        "enums.d.ts",
         "_locales/zh-CN/cutebot-strings.json",
         "_locales/zh-CN/cutebot-jsdoc-strings.json",
         "_locales/ja/cutebot-strings.json",
