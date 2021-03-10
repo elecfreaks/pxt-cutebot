@@ -108,27 +108,7 @@ const STM8_ADDRESSS = 0x10
         //% blcok="Minus"
         Minus = 12,
         //% blcok="Back"
-        Back = 6,
-        //% block="0"
-        Zero = 14,
-        //% block="1"
-        One = 16,
-        //% block="2"
-        Two = 17,
-        //% block="3"
-        Three = 18,
-        //% block="4"
-        Four = 20,
-        //% block="5"
-        Five = 21,
-        //% block="6"
-        Six = 22,
-        //% block="7"
-        Seven = 24,
-        //% block="8"
-        Eight = 25,
-        //% block="9"
-        Nine = 26
+        Back = 6
     }
     /**
      * TODO: Set the speed of left and right wheels. 
