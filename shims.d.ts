@@ -4,7 +4,7 @@
 
     //% color=50 weight=80
     //% icon="\uf1eb"
-declare namespace IRv2 {
+declare namespace maqueenIRV2 {
 }
 
 // Auto-generated. Do not edit. Really.
