@@ -91,10 +91,8 @@ const STM8_ADDRESSS = 0x10
      * IR controller button
      */
     export enum IRButton {
-        //% blcok="Power"
-        power = 0,
         //% blcok="Menu"
-        Menu = 0x02,
+        Menu = 2,
         //% blcok="Up"
         Up = 0x5,
         //% blcok="Left"
@@ -106,7 +104,7 @@ const STM8_ADDRESSS = 0x10
         //% blcok="OK"
         OK = 0x9,
         //% blcok="Plus"
-        Plus = 0x4,
+        Plus = 4,
         //% blcok="Minus"
         Minus = 0xC,
         //% blcok="Back"
