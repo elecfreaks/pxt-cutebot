@@ -90,7 +90,7 @@ const STM8_ADDRESSS = 0x10
     /**
      * IR controller button
      */
-    export enum IRButton {
+    export enum IRButtons {
         //% blcok="Menu"
         Menu = 2,
         //% blcok="Up"
@@ -477,14 +477,9 @@ const STM8_ADDRESSS = 0x10
     function irCode(): number {
             return 0;
     }
-    /**
-     * 
-     * @param button IR controller button
-     * @param handler handler
-     */
     //% weight=25
-    //% blockId=IR_callbackUser block="On IR button %button Pressed"
-    export function IR_callbackUser(button: IRButton, handler: () => void) {
+    //% block="On IR button %button Pressed"
+    export function IR_callbackUser(button: IRButtons, handler: () => void) {
         control.onEvent(98, button, handler)
         control.inBackground(() => {
             while (true) {

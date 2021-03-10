@@ -1,5 +1,6 @@
 {
   "cuteBot": "Functions to Cutebot by ELECFREAKS Co.,Ltd.",
+  "cuteBot.IRButtons": "IR controller button",
   "cuteBot.MbEvents": "Line Sensor events    MICROBIT_PIN_EVT_RISE",
   "cuteBot.MbPins": "Pins used to generate events",
   "cuteBot.MotorsList": "Select the motor on the left or right",
