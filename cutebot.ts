@@ -93,10 +93,24 @@ const STM8_ADDRESSS = 0x10
     export enum IRButton {
         //% blcok="Power"
         power = 0,
-        //% block="Menu"
-        menu = 2,
-        //% block="+"
-        add = 4
+        //% blcok="Menu"
+        Menu = 0x02,
+        //% blcok="Up"
+        Up = 0x5,
+        //% blcok="Left"
+        Left = 0x8,
+        //% blcok="Right"
+        Right = 0xA,
+        //% blcok="Down"
+        Down = 0xD,
+        //% blcok="OK"
+        OK = 0x9,
+        //% blcok="Plus"
+        Plus = 0x4,
+        //% blcok="Minus"
+        Minus = 0xC,
+        //% blcok="Back"
+        Back = 0x6
     }
     /**
      * TODO: Set the speed of left and right wheels. 
