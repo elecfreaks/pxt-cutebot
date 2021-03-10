@@ -1,6 +1,6 @@
 {
     "name": "cutebot",
-    "version": "4.2.1",
+    "version": "5.0.0",
     "description": "ELECFREAKS cutebot car",
     "license": "MIT",
     "dependencies": {
