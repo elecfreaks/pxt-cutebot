@@ -21,7 +21,6 @@ int logic_value(){//判断逻辑值"0"和"1"子函数
             return 1;
        }
     }
-uBit.serial.printf("error\r\n");
     return -1;
 }
 
