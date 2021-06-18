@@ -53,12 +53,12 @@ void remote_decode(void){
     uint32_t nowtime;
     while(uBit.io.P16.getDigitalValue()){//高电平等待
         nowtime = system_timer_current_time_us();
-        if((nowtime - lasttime) > 100000){//超过100 ms,表明此时没有按键按下
+        if((nowtime - lasttime) > 50000){//超过50 ms,表明此时没有按键按下
             ir_code = 0xff00;
             return;
         }
     }
-    //如果高电平持续时间不超过100ms
+    //如果高电平持续时间不超过50ms
     lasttime = system_timer_current_time_us();
     while(!uBit.io.P16.getDigitalValue());//低等待
     nowtime = system_timer_current_time_us();
@@ -86,46 +86,6 @@ void remote_decode(void){
 int irCode(){
     remote_decode();
     return data;
-}
-
-//%
-int readPulseIn(int status){
-  uint32_t lasttime,nowtime,temp;
-  if(status == 1){//HIGH
-        lasttime = system_timer_current_time_us();
-	while(!uBit.io.P2.getDigitalValue()){ 
-           temp = system_timer_current_time_us();
-           if((temp - lasttime) > 70000){
-	     //uBit.serial.printf("time out 0 %d\r\n",(temp-lasttime));
-	     return -1;
-           }
-        }
-        lasttime = system_timer_current_time_us();
-	while(uBit.io.P2.getDigitalValue()){
-           if((system_timer_current_time_us() - lasttime) > 70000){
-	     //uBit.serial.printf("time out 1");
-	     return -1;
-           }
-        }
-        nowtime = system_timer_current_time_us();
-	
-  }else{//LOW
-	while(uBit.io.P2.getDigitalValue()){
-           if((system_timer_current_time_us() - lasttime) > 70000){
-	     //uBit.serial.printf("time out 3");
-	     return -1;
-           }
-        }
-	lasttime = system_timer_current_time_us();
-	while(!uBit.io.P2.getDigitalValue()){
-           if((system_timer_current_time_us() - lasttime) > 70000){
-	     //uBit.serial.printf("time out 4");
-	     return -1;
-           }
-	}
-	nowtime = system_timer_current_time_us();
-  }
-  return (nowtime - lasttime);
 }
 
 }
