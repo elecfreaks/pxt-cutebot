@@ -485,6 +485,7 @@ const STM8_ADDRESSS = 0x10
         control.onEvent(98, button, handler)
         control.inBackground(() => {
             while (true) {
+                serial.writeLine(irCode()+"")
                 control.raiseEvent(98, irCode(),EventCreationMode.CreateAndFire)
                 basic.pause(50)
             }
