@@ -75,7 +75,7 @@ void remote_decode(void){
             nowtime = system_timer_current_time_us();
             if((nowtime - lasttime) > 500 && (nowtime - lasttime) < 700){//560us
                 //uBit.serial.printf("addr=0x%X,code = 0x%X\r\n",ir_addr,ir_code);
-                data = 0;
+                data = ir_code;
                 return;//ir_code;
             }
         }
@@ -127,4 +127,5 @@ int readPulseIn(int status){
   }
   return (nowtime - lasttime);
 }
+
 }
