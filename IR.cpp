@@ -46,6 +46,7 @@ void pulse_deal(){
     }
 
 }
+
 void remote_decode(void){
     data = 0x00;
     uint32_t lasttime = system_timer_current_time_us();
@@ -74,7 +75,7 @@ void remote_decode(void){
             nowtime = system_timer_current_time_us();
             if((nowtime - lasttime) > 500 && (nowtime - lasttime) < 700){//560us
                 //uBit.serial.printf("addr=0x%X,code = 0x%X\r\n",ir_addr,ir_code);
-                data = 0xff00;
+                data = 0;
                 return;//ir_code;
             }
         }

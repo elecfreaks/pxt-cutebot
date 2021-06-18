@@ -482,10 +482,10 @@ const STM8_ADDRESSS = 0x10
     //% weight=25
     //% block="On IR button %button Pressed"
     export function IR_callbackUser(button: IRButtons, handler: () => void) {
-        control.onEvent(98, button, handler)
+        control.onEvent(3600, button, handler)
         control.inBackground(() => {
             while (true) {
-                control.raiseEvent(98, irCode()/255,EventCreationMode.CreateAndFire)
+                control.raiseEvent(3600, irCode()/255)
                 basic.pause(50)
             }
         })
