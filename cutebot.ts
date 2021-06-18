@@ -92,19 +92,19 @@ const STM8_ADDRESSS = 0x10
      */
     export enum IRButtons {
         //% block="Power"
-        Power = 0xff00,
+        Power = 256,
         //% blcok="Menu"
-        Menu = 0xfd02,
+        Menu = 254,
         //% blcok="Up"
-        Up = 0xfa05,
+        Up = 251,
         //% blcok="Left"
-        Left = 0xf708,
+        Left = 248,
         //% blcok="Right"
-        Right = 0xf50a,
+        Right = 246,
         //% blcok="Down"
-        Down = 0xf20d,
+        Down = 243,
         //% blcok="OK"
-        OK = 9,
+        OK = 247,
         //% blcok="Plus"
         Plus = 4,
         //% blcok="Minus"
@@ -485,8 +485,7 @@ const STM8_ADDRESSS = 0x10
         control.onEvent(98, button, handler)
         control.inBackground(() => {
             while (true) {
-                serial.writeLine(irCode()+"")
-                control.raiseEvent(98, irCode(),EventCreationMode.CreateAndFire)
+                control.raiseEvent(98, irCode()/255,EventCreationMode.CreateAndFire)
                 basic.pause(50)
             }
         })
