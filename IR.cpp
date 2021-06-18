@@ -46,7 +46,6 @@ void pulse_deal(){
     }
 
 }
-
 void remote_decode(void){
     data = 0x00;
     uint32_t lasttime = system_timer_current_time_us();
