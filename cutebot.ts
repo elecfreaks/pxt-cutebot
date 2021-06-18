@@ -483,8 +483,8 @@ const STM8_ADDRESSS = 0x10
         control.onEvent(98, button, handler)
         control.inBackground(() => {
             while (true) {
-                control.raiseEvent(98, irCode()&0x00ff, EventCreationMode.CreateAndFire)
-                basic.pause(20)
+                control.raiseEvent(98, irCode())
+                basic.pause(50)
             }
         })
     }
