@@ -4,6 +4,7 @@
 //% weight=5 color=#0fbc11  icon="\uf207" 
 namespace cuteBot {
 const STM8_ADDRESSS = 0x10
+let IR_Val = 0
     let _initEvents = true
 	/**
 	* Unit of Ultrasound Module
@@ -478,16 +479,27 @@ const STM8_ADDRESSS = 0x10
         return 0;
     }
     //% weight=25
-    //% block="On IR button %button Pressed"
-    export function IR_callbackUser(button: IRButtons, handler: () => void) {
+    //% block="On IR receiving"
+    export function IR_callbackUser(handler: () => void) {
         pins.setPull(DigitalPin.P16, PinPullMode.PullUp)
-        control.onEvent(98, button, handler)
+        control.onEvent(98, 3500, handler)
         control.inBackground(() => {
             while (true) {
-                control.raiseEvent(98, irCode()&0x00ff, EventCreationMode.CreateAndFire)
+                IR_Val = irCode()
+                if(IR_Val != 0xff00){
+                    control.raiseEvent(98, 3500, EventCreationMode.CreateAndFire)
+                }
                 basic.pause(20)
             }
         })
+    }
+    /**
+     * TODO: Get IR value
+     */
+    //% block="IR Button %Button is pressed"
+    //% weight=15
+    export function IR_Button(Button:IRButtons):boolean{
+        return (IR_Val&0x00ff) == Button
     }
     function initEvents(): void {
         if (_initEvents) {
