@@ -480,7 +480,7 @@ let IR_Val = 0
     }
     //% weight=25
     //% block="On IR receiving"
-    export function IR_callbackUser(handler: () => void) {
+    export function IR_callback(handler: () => void) {
         pins.setPull(DigitalPin.P16, PinPullMode.PullUp)
         control.onEvent(98, 3500, handler)
         control.inBackground(() => {
