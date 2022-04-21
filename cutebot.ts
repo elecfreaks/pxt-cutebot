@@ -442,9 +442,9 @@ let IR_Val = 0
         const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 50);
         switch (unit) {
             case SonarUnit.Centimeters:
-                return Math.floor(d * 9 / 6 / 58);
+                return Math.floor(d * 34 / 2 / 1000);
             case SonarUnit.Inches:
-                return Math.floor(d * 9 / 6 / 148);
+                return Math.floor(d * 34 / 2 / 1000 * 0.3937);
             default:
                 return d;
         }
