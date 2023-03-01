@@ -1,6 +1,6 @@
 {
     "name": "cutebot",
-    "version": "6.0.6",
+    "version": "6.0.7",
     "description": "ELECFREAKS cutebot car",
     "license": "MIT",
     "dependencies": {
@@ -22,14 +22,18 @@
         "_locales/es/cutebot-strings.json",
         "_locales/es/cutebot-jsdoc-strings.json",
         "_locales/cs/cutebot-strings.json",
-        "_locales/cs/cutebot-jsdoc-strings.json"
+        "_locales/cs/cutebot-jsdoc-strings.json",
+        "main.py",
+        "main.ts",
+        "_locales/es-ES/cutebot-jsdoc-strings.json",
+        "_locales/es-ES/cutebot-strings.json"
     ],
     "testFiles": [
         "tests.ts"
     ],
     "public": true,
     "targetVersions": {
-        "target": "4.0.11",
+        "target": "5.0.12",
         "targetId": "microbit"
     },
     "supportedTargets": [
