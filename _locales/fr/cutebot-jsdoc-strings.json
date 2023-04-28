@@ -12,7 +12,7 @@
   "cuteBot.backforward": "TODO: pleine vitesse arrière, la vitesse est -100.",
   "cuteBot.closeheadlights": "Éteindre tous les LED avant.",
   "cuteBot.colorLight": "TODO: Régler toutes les LED avant.",
-  "cuteBot.forward": "TODO: pleine vitesse avant, la vitesse est 100.",
+  "cuteBot.forward": "TODO: Laissez la voiture avancer, en raison de la différence du moteur, ne peut pas assurer une ligne droite.",
   "cuteBot.motors": "TODO: Régler la vitesse des roues gauche et droite.",
   "cuteBot.motors|param|lspeed": "Vitesse de la roue gauche, eg: 100",
   "cuteBot.motors|param|rspeed": "Vitesse de la roue droite, eg: -100",

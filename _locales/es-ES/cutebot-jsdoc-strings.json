@@ -12,7 +12,7 @@
     "cuteBot.backforward": "TODO: velocidad de marcha atrás completa, la velocidad es -100.",
     "cuteBot.closeheadlights": "Apague todos los LED frontales.",
     "cuteBot.colorLight": "TODO: Configure todos los LED frontales.",
-    "cuteBot.forward": "TODO: avance a toda velocidad, la velocidad es 100.",
+    "cuteBot.forward": "TODO: Dejar que el coche avance, debido a la diferencia del motor, no puede garantizar una línea recta.",
     "cuteBot.motors": "TODO: Ajuste la velocidad de las ruedas izquierda y derecha.",
     "cuteBot.motors|param|lspeed": "Velocidad de la rueda izquierda, por ejemplo: 100",
     "cuteBot.motors|param|rspeed": "Velocidad de la rueda derecha, por ejemplo: -100",

@@ -12,7 +12,7 @@
   "cuteBot.backforward": "TODO: couvej plnou rychlostí,rychlost je -100.",
   "cuteBot.closeheadlights": "Zhasni všechny světla.",
   "cuteBot.colorLight": "TODO: Nastav LED světla.",
-  "cuteBot.forward": "TODO: Jeď plnou rychlostí vpřed,rychlost je 100.",
+  "cuteBot.forward": "TODO: Nechte vozík jet dopředu, kvůli rozdílu v motorech není možné zajistit přímku",
   "cuteBot.motors": "TODO: Nastav rychlost levého a pravého kola.",
   "cuteBot.motors|param|lspeed": "Rychlost levého kola , eg: 100",
   "cuteBot.motors|param|rspeed": "Rychlost pravého kola, eg: -100",

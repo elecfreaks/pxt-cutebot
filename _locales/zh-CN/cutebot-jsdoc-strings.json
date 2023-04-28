@@ -10,7 +10,7 @@
   "cuteBot.backforward": "TODO: full speed move back,speed is -100.",
   "cuteBot.closeheadlights": "Close all headlights.",
   "cuteBot.colorLight": "TODO: Set LED headlights.",
-  "cuteBot.forward": "TODO: full speed move forward,speed is 100.",
+  "cuteBot.forward": "TODO: Let the car drive forward, because of the difference of the motor, can not ensure a straight line.",
   "cuteBot.motors": "TODO: Set the speed of left and right wheels.",
   "cuteBot.motors|param|lspeed": "Left wheel speed , eg: 100",
   "cuteBot.motors|param|rspeed": "Right wheel speed, eg: -100",

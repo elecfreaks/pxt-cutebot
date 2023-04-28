@@ -12,7 +12,7 @@
   "cuteBot.backforward": "TODO: Velocidad máxima hacia atrás, velocidad -100.",
   "cuteBot.closeheadlights": "Apagar todos los led.",
   "cuteBot.colorLight": "TODO: Configurar luces led.",
-  "cuteBot.forward": "TODO: Mover a maxima velocidad hacia adelante, velocidad 100.",
+  "cuteBot.forward": "TODO: Deje que el automóvil avance, debido a la diferencia del motor, no puede garantizar una línea recta.",
   "cuteBot.motors": "TODO: Configurar la velocidad en las ruedas izquierda y derecha.",
   "cuteBot.motors|param|lspeed": "Velocidad rueda izquierda, pej: 100",
   "cuteBot.motors|param|rspeed": "Velocidad rueda derecha, pej: -100",
