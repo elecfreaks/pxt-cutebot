@@ -397,16 +397,16 @@ let IR_Val = 0
         pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
         let left_tracking = pins.digitalReadPin(DigitalPin.P13);
         let right_tracking = pins.digitalReadPin(DigitalPin.P14);
-        if (side == 0 && state == 1 && left_tracking == 1) {
+        if (side == 113 && state == 2 && left_tracking == 1) {
             return true;
         }
-        else if (side == 0 && state == 0 && left_tracking == 0) {
+        else if (side == 113 && state == 3 && left_tracking == 0) {
             return true;
         }
-        else if (side == 1 && state == 1 && right_tracking == 1) {
+        else if (side == 114 && state == 2 && right_tracking == 1) {
             return true;
         }
-        else if (side == 1 && state == 0 && right_tracking == 0) {
+        else if (side == 114 && state == 3 && right_tracking == 0) {
             return true;
         }
         else {
