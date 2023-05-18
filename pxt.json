@@ -26,7 +26,9 @@
         "main.py",
         "main.ts",
         "_locales/es-ES/cutebot-jsdoc-strings.json",
-        "_locales/es-ES/cutebot-strings.json"
+        "_locales/es-ES/cutebot-strings.json",
+        "_locales/ca/cutebot-jsdoc-strings.json",
+        "_locales/ca/cutebot-strings.json"
     ],
     "testFiles": [
         "tests.ts"
