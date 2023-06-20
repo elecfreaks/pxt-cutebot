@@ -30,17 +30,17 @@
     "cuteBot.SonarUnit.Inches|block": "polzades",
     "cuteBot.TrackingState.L_R_line|block": "● ●",
     "cuteBot.TrackingState.L_R_unline|block": "◌ ◌",
-    "cuteBot.TrackingState.L_line_R_unline|block": "● ◌",       
+    "cuteBot.TrackingState.L_line_R_unline|block": "● ◌",
     "cuteBot.TrackingState.L_unline_R_line|block": "◌ ●",
     "cuteBot.backforward|block": "Retrocedir a tota velocitat",
     "cuteBot.closeheadlights|block": "Apagar tots els focus LED",
     "cuteBot.colorLight|block": "Establir color %color als focus LED",
     "cuteBot.forward|block": "Avançar a tota velocitat",
-    "cuteBot.motors|block": "Establir velocitat de la roda esquerra %lspeed\% i de la roda dreta %rspeed\%",
-    "cuteBot.moveTime|block": "Anar %dir a velocitat %speed\% durant %time segons",
+    "cuteBot.motors|block": "Establir velocitat de la roda esquerra %lspeed\\% i de la roda dreta %rspeed\\%",
+    "cuteBot.moveTime|block": "Anar %dir a velocitat %speed\\% durant %time segons",
     "cuteBot.setServo|block": "Establir angle %angle° al servo %servo",
     "cuteBot.singleheadlights|block": "Establir color %light als focus LED R:%r G:%g B:%b",
-    "cuteBot.stopcar|block": "Aturar el cotxe immediatament",
+  "cuteBot.stopcar|block": "Aturar el cotxe immediatament",
     "cuteBot.trackEvent|block": "En %sensor, linia %event",
     "cuteBot.trackSide|block": "%side del sensor de línia %state",
     "cuteBot.tracking|block": "L'estat del seguiment és %state",
@@ -49,4 +49,4 @@
     "cuteBot.ultrasonic|block": "Sensor distància %unit HC-SR04",
     "cuteBot|block": "cuteBot",
     "{id:category}CuteBot": "CuteBot"
-  }
+}
