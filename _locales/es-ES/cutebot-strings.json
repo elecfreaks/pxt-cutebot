@@ -38,7 +38,7 @@
     "cuteBot.forward|block": "Avanzar a toda velocidad",
     "cuteBot.motors|block": "Establecer velocidad de la rueda izquierda %lspeed\\% |y de la rueda derecha %rspeed\\%",
     "cuteBot.moveTime|block": "Ir %dir a velocidad %speed\\% durante %time segundos",
-    "cuteBot.setServo|block": "Establecer %servo ángulo a %angle °",
+    "cuteBot.setServo|block": "Establecer servo %servo ángulo a %angle °",
     "cuteBot.singleheadlights|block": "Establecer color %light en los faros LED R:%r G:%g B:%b",
     "cuteBot.stopcar|block": "Detener el coche inmediatamente",
     "cuteBot.trackEvent|block": "En %sensor, línea %event",
