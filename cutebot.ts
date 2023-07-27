@@ -473,6 +473,7 @@ let IR_Val = 0
             buf[3] = 0;			//补位
             pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
         }
+        basic.pause(3)
     }
     //% shim=IRV2::irCode
     function irCode(): number {
