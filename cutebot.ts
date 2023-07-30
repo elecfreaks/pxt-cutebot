@@ -3,39 +3,39 @@
  */
 //% weight=5 color=#0fbc11  icon="\uf207" 
 namespace cuteBot {
-const STM8_ADDRESSS = 0x10
-let IR_Val = 0
+    const STM8_ADDRESSS = 0x10
+    let IR_Val = 0
     let _initEvents = true
-	/**
-	* Unit of Ultrasound Module
-	*/
+    /**
+    * Unit of Ultrasound Module
+    */
     export enum SonarUnit {
         //% block="cm"
         Centimeters,
         //% block="inches"
         Inches
     }
-	/**
-	* Select the motor on the left or right
-	*/
+    /**
+    * Select the motor on the left or right
+    */
     export enum MotorsList {
         //% blockId="M1" block="M1"
         M1 = 0,
         //% blockId="M2" block="M2"
         M2 = 1
     }
-	/**
-	* Select the servo on the S1 or S2
-	*/
+    /**
+    * Select the servo on the S1 or S2
+    */
     export enum ServoList {
         //% block="S1"
         S1 = 0,
         //% block="S2"
         S2 = 1
     }
-	/**
-	* Select the RGBLights on the left or right
-	*/
+    /**
+    * Select the RGBLights on the left or right
+    */
     export enum RGBLights {
         //% blockId="Right_RGB" block="Right_RGB"
         RGB_L = 1,
@@ -44,9 +44,9 @@ let IR_Val = 0
         //% blockId="ALL" block="ALL"
         ALL = 3
     }
-	/**
-	* Status List of Tracking Modules
-	*/
+    /**
+    * Status List of Tracking Modules
+    */
     export enum TrackingState {
         //% block="● ●" enumval=0
         L_R_line,
@@ -247,7 +247,7 @@ let IR_Val = 0
         pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
 
     }
-	/**
+    /**
     * TODO: full speed turnleft.
     */
     //% blockId=cutebot_left block="Turn left at full speed"
@@ -264,7 +264,7 @@ let IR_Val = 0
         buf[2] = 0;
         pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
     }
-	/**
+    /**
     * TODO: full speed turnright.
     */
     //% blockId=cutebot_right block="Turn right at full speed"
@@ -281,7 +281,7 @@ let IR_Val = 0
         buf[2] = 0;
         pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
     }
-	/**
+    /**
     * TODO: stopcar
     */
     //% blockId=cutebot_stopcar block="Stop car immediatly"
@@ -302,12 +302,12 @@ let IR_Val = 0
         b = color & 0xFF
         singleheadlights(light, r, g, b)
     }
-	/**
-	* TODO: Select a headlights and set the RGB color.
-	* @param R R color value of RGB color, eg: 0
-	* @param G G color value of RGB color, eg: 128
-	* @param B B color value of RGB color, eg: 255
-	*/
+    /**
+    * TODO: Select a headlights and set the RGB color.
+    * @param R R color value of RGB color, eg: 0
+    * @param G G color value of RGB color, eg: 128
+    * @param B B color value of RGB color, eg: 255
+    */
     //% inlineInputMode=inline
     //% blockId=RGB block="Set LED headlights %light color R:%r G:%g B:%b"
     //% r.min=0 r.max=255
@@ -357,8 +357,8 @@ let IR_Val = 0
     }
 
     /**
-	* Judging the Current Status of Tracking Module. 
-	* @param state Four states of tracking module, eg: TrackingState.L_R_line
+    * Judging the Current Status of Tracking Module. 
+    * @param state Four states of tracking module, eg: TrackingState.L_R_line
     */
     //% blockId=ringbitcar_tracking block="Tracking state is %state"
     //% weight=50
@@ -424,9 +424,9 @@ let IR_Val = 0
         initEvents();
         control.onEvent(<number>sensor, <number>event, handler);
     }
-	/**
-	* Cars can extend the ultrasonic function to prevent collisions and other functions.. 
-	* @param Sonarunit two states of ultrasonic module, eg: Centimeters
+    /**
+    * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
+    * @param Sonarunit two states of ultrasonic module, eg: Centimeters
     */
     //% blockId=ultrasonic block="HC-SR04 Sonar unit %unit"
     //% weight=35
@@ -468,12 +468,11 @@ let IR_Val = 0
         }
         else {
             buf[0] = 0x06;
-            buf[1] = angle;
-            buf[2] = 0;
+            buf[1] = 0;
+            buf[2] = angle;
             buf[3] = 0;			//补位
             pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
         }
-        basic.pause(3)
     }
     //% shim=IRV2::irCode
     function irCode(): number {
@@ -487,7 +486,7 @@ let IR_Val = 0
         control.inBackground(() => {
             while (true) {
                 IR_Val = irCode()
-                if(IR_Val != 0xff00){
+                if (IR_Val != 0xff00) {
                     control.raiseEvent(98, 3500, EventCreationMode.CreateAndFire)
                 }
                 basic.pause(20)
@@ -499,8 +498,8 @@ let IR_Val = 0
      */
     //% block="IR Button %Button is pressed"
     //% weight=15
-    export function IR_Button(Button:IRButtons):boolean{
-        return (IR_Val&0x00ff) == Button
+    export function IR_Button(Button: IRButtons): boolean {
+        return (IR_Val & 0x00ff) == Button
     }
     function initEvents(): void {
         if (_initEvents) {
