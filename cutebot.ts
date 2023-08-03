@@ -468,11 +468,12 @@ namespace cuteBot {
         }
         else {
             buf[0] = 0x06;
-            buf[1] = 0;
-            buf[2] = angle;
+            buf[1] = angle;
+            buf[2] = 0;
             buf[3] = 0;			//补位
             pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
         }
+
     }
     //% shim=IRV2::irCode
     function irCode(): number {
