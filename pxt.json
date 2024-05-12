@@ -1,11 +1,11 @@
 {
     "name": "cutebot",
-    "version": "6.1.13",
+    "version": "6.1.14",
     "description": "ELECFREAKS cutebot car",
     "license": "MIT",
     "dependencies": {
         "core": "*",
-        "neopixel": "github:elecfreaks/pxt-neopixel#v0.6.18"
+        "neopixel": "github:elecfreaks/pxt-neopixel#v0.6.19"
     },
     "files": [
         "README.md",
@@ -13,6 +13,8 @@
         "IR.cpp",
         "shims.d.ts",
         "enums.d.ts",
+        "_locales/zh-TW/cutebot-strings.json",
+        "_locales/zh-TW/cutebot-jsdoc-strings.json",
         "_locales/zh-CN/cutebot-strings.json",
         "_locales/zh-CN/cutebot-jsdoc-strings.json",
         "_locales/ja/cutebot-strings.json",
