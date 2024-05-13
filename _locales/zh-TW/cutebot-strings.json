@@ -1,6 +1,6 @@
 {
-  "cuteBot.Direction.backward|block": "後退",
-  "cuteBot.Direction.forward|block": "前進",
+  "cuteBot.Direction.backward|block": "後",
+  "cuteBot.Direction.forward|block": "前",
   "cuteBot.Direction.left|block": "左",
   "cuteBot.Direction.right|block": "右",
   "cuteBot.IRButtons.Eight|block": "8",
@@ -15,8 +15,8 @@
   "cuteBot.IRButtons.Zero|block": "0",
   "cuteBot.IR_Button|block": "紅外線按鈕 %Button 被按下",
   "cuteBot.IR_callback|block": "當接收到紅外線訊號",
-  "cuteBot.MbEvents.FindLine|block": "步入正軌",
-  "cuteBot.MbEvents.LoseLine|block": "迷失方向",
+  "cuteBot.MbEvents.FindLine|block": "找到",
+  "cuteBot.MbEvents.LoseLine|block": "遺失",
   "cuteBot.MbPins.Left|block": "左",
   "cuteBot.MbPins.Right|block": "右",
   "cuteBot.MotorsList.M1|block": "M1",
@@ -38,7 +38,7 @@
   "cuteBot.forward|block": "全速前進",
   "cuteBot.motors|block": "設定左邊車輪速度為 %lspeed\\% |右輪速度為 %rspeed\\%",
   "cuteBot.moveTime|block": "朝 %dir 以速度 %speed\\% 前進持續 %time 秒",
-  "cuteBot.setServo|block": "設定舵機 %servo 的角度為%angle °",
+  "cuteBot.setServo|block": "設定伺服馬達 %servo 的角度為%angle °",
   "cuteBot.singleheadlights|block": "設定 LED 車頭燈 %light 顏色為 R:%r G:%g B:%b",
   "cuteBot.stopcar|block": "馬上停車",
   "cuteBot.trackEvent|block": "當 %sensor| 循線感測器 %event 黑線",
@@ -46,7 +46,7 @@
   "cuteBot.tracking|block": "循線感測器當前狀態為 %state",
   "cuteBot.turnleft|block": "全速左轉",
   "cuteBot.turnright|block": "全速右轉",
-  "cuteBot.ultrasonic|block": "HC-SR04 聲納感測距離 %unit 單位",
+  "cuteBot.ultrasonic|block": "HC-SR04 聲納感測距離 %unit",
   "cuteBot|block": "CuteBot車車",
   "{id:category}CuteBot": "CuteBot車車"
 }
