@@ -43,7 +43,7 @@
     "cuteBot.stopcar|block": "zastav okamžitě vozidlo",
     "cuteBot.trackEvent|block": "pokud senzor %sensor| stav čáry %event",
     "cuteBot.trackSide|block": "%side kanál snímače čáry %state",
-    "cuteBot.tracking|block": "stav sledování čáry je %state",
+    "cuteBot.tracking|block": "stav snímače čáry je %state",
     "cuteBot.turnleft|block": "zatoč vlevo plnou rychlostí",
     "cuteBot.turnright|block": "zatoč vpravo plnou rychlostí",
     "cuteBot.ultrasonic|block": "HC-SR04 sonarová jednotka %unit",
