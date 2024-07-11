@@ -20,7 +20,7 @@
   "cuteBot.moveTime|param|dir": "Směr jízdy, eg: Direction.forward",
   "cuteBot.moveTime|param|speed": "Rychlost jízdy, eg: 50",
   "cuteBot.moveTime|param|time": "Doba jízdy, eg: 5",
-  "cuteBot.setServo": Nastaví úhel serva.",
+  "cuteBot.setServo": "Nastaví úhel serva.",
   "cuteBot.setServo|param|Servo": "Výběr serva , eg: cuteBot.ServoList.S1",
   "cuteBot.setServo|param|angle": "Úhel serva, eg: 90",
   "cuteBot.singleheadlights": "Vyber světlomet a nastav RGB barvu.",
