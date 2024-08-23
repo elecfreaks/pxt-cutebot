@@ -1,11 +1,11 @@
 {
     "name": "cutebot",
-    "version": "6.1.14",
+    "version": "6.1.15",
     "description": "ELECFREAKS cutebot car",
     "license": "MIT",
     "dependencies": {
         "core": "*",
-        "neopixel": "github:elecfreaks/pxt-neopixel#v0.6.18"
+        "neopixel": "github:elecfreaks/pxt-neopixel#v0.6.20"
     },
     "files": [
         "README.md",
