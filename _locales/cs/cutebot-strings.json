@@ -44,8 +44,8 @@
     "cuteBot.trackEvent|block": "pokud senzor %sensor| stav čáry %event",
     "cuteBot.trackSide|block": "čára pro %side kanál snímače čáry %state",
     "cuteBot.tracking|block": "stav snímače čáry je %state",
-    "cuteBot.turnleft|block": "zatoč vlevo plnou rychlostí",
-    "cuteBot.turnright|block": "zatoč vpravo plnou rychlostí",
+    "cuteBot.turnleft|block": "zatáčej vlevo plnou rychlostí",
+    "cuteBot.turnright|block": "zatáčej vpravo plnou rychlostí",
     "cuteBot.ultrasonic|block": "HC-SR04 sonarová jednotka %unit",
     "cuteBot|block": "cuteBot",
     "{id:category}CuteBot": "CuteBot"
