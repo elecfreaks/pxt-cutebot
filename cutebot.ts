@@ -133,8 +133,8 @@ namespace cuteBot {
     }
     /**
      * TODO: Set the speed of left and right wheels. 
-     * @param lspeed Left wheel speed , eg: 100
-     * @param rspeed Right wheel speed, eg: -100
+     * @param lspeed Left wheel speed 
+     * @param rspeed Right wheel speed
      */
     //% blockId=MotorRun block="Set left wheel speed %lspeed\\% |right wheel speed %rspeed\\%"
     //% lspeed.min=-100 lspeed.max=100
@@ -184,9 +184,9 @@ namespace cuteBot {
     }
     /**
     * TODO: Full speed operation lasts for 10 seconds,speed is 100.
-    * @param dir Driving direction, eg: Direction.forward
-    * @param speed Running speed, eg: 50
-    * @param time Travel time, eg: 5
+    * @param dir Driving direction
+    * @param speed Running speed
+    * @param time Travel time
     */
     //% blockId=cutebot_move_time block="Go %dir at speed%speed\\% for %time seconds"
     //% weight=95
@@ -304,9 +304,9 @@ namespace cuteBot {
     }
     /**
     * TODO: Select a headlights and set the RGB color.
-    * @param R R color value of RGB color, eg: 0
-    * @param G G color value of RGB color, eg: 128
-    * @param B B color value of RGB color, eg: 255
+    * @param R R color value of RGB color
+    * @param G G color value of RGB color
+    * @param B B color value of RGB color
     */
     //% inlineInputMode=inline
     //% blockId=RGB block="Set LED headlights %light color R:%r G:%g B:%b"
@@ -358,7 +358,7 @@ namespace cuteBot {
 
     /**
     * Judging the Current Status of Tracking Module. 
-    * @param state Four states of tracking module, eg: TrackingState.L_R_line
+    * @param state Four states of tracking module
     */
     //% blockId=ringbitcar_tracking block="Tracking state is %state"
     //% weight=50
@@ -385,8 +385,8 @@ namespace cuteBot {
     }
     /**
     * TODO: track one side
-    * @param side Line sensor edge , eg: MbPins.Left
-    * @param state Line sensor status, eg: MbEvents.FindLine
+    * @param side Line sensor edge 
+    * @param state Line sensor status
     */
     //% block="%side line sensor %state"
     //% state.fieldEditor="gridpicker" state.fieldOptions.columns=2
@@ -426,7 +426,7 @@ namespace cuteBot {
     }
     /**
     * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
-    * @param Sonarunit two states of ultrasonic module, eg: Centimeters
+    * @param Sonarunit two states of ultrasonic module
     */
     //% blockId=ultrasonic block="HC-SR04 Sonar unit %unit"
     //% weight=35
@@ -451,8 +451,8 @@ namespace cuteBot {
     }
     /**
      * TODO: Set the angle of servo. 
-     * @param Servo ServoList , eg: cuteBot.ServoList.S1
-     * @param angle angle of servo, eg: 90
+     * @param Servo ServoList 
+     * @param angle angle of servo
      */
     //% blockId=cutebot_servo block="Set servo %servo angle to %angle °"
     //% angle.shadow="protractorPicker"
