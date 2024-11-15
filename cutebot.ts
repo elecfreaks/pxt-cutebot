@@ -319,7 +319,7 @@ namespace cuteBot {
         if (light == 3) {
             buf[0] = 0x04;
             buf[1] = r;
-            buf[2] = g*0.38;
+            buf[2] = g * 0.38;
             buf[3] = b;
             pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
             buf[0] = 0x08;
