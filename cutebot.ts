@@ -318,7 +318,7 @@ namespace cuteBot {
         let buf = pins.createBuffer(4);
         if (light == 3) {
             buf[0] = 0x04;
-            buf[1] = r;
+            buf[1] = r*0.42;
             buf[2] = g;
             buf[3] = b;
             pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
