@@ -284,7 +284,7 @@ namespace cuteBot {
     /**
     * TODO: stopcar
     */
-    //% blockId=cutebot_stopcar block="Stop car immediatly"
+    //% blockId=cutebot_stopcar block="Stop car immediately"
     //% weight=70
     export function stopcar(): void {
         motors(0, 0)
