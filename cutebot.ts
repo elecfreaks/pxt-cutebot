@@ -92,6 +92,8 @@ namespace cuteBot {
      * IR controller button
      */
     export enum IRButtons {
+        //% blcok="Off"
+        Off = 1,
         //% blcok="Menu"
         Menu = 2,
         //% blcok="Up"
@@ -479,16 +481,24 @@ namespace cuteBot {
     function irCode(): number {
         return 0;
     }
+
+    let IR_handling_flag = false
     //% weight=25
     //% block="On IR receiving"
     export function IR_callback(handler: () => void) {
         pins.setPull(DigitalPin.P16, PinPullMode.PullUp)
-        control.onEvent(98, 3500, handler)
+        control.onEvent(98, 3500, ()=>{
+            handler()
+            IR_handling_flag = false;
+        })
         control.inBackground(() => {
             while (true) {
-                IR_Val = irCode()
-                if (IR_Val != 0xff00) {
-                    control.raiseEvent(98, 3500, EventCreationMode.CreateAndFire)
+                if (!IR_handling_flag){
+                    IR_Val = irCode()
+                    if (IR_Val == 0xff00 || (IR_Val & 0x00ff) <= 30 && (IR_Val & 0x00ff) != 0) {
+                        IR_handling_flag = true
+                        control.raiseEvent(98, 3500, EventCreationMode.CreateAndFire)
+                    }
                 }
                 basic.pause(20)
             }
@@ -500,6 +510,8 @@ namespace cuteBot {
     //% block="IR Button %Button is pressed"
     //% weight=15
     export function IR_Button(Button: IRButtons): boolean {
+        if (IR_Val == 0xff00)
+            IR_Val = 0x0001
         return (IR_Val & 0x00ff) == Button
     }
     function initEvents(): void {

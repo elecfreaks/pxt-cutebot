@@ -54,7 +54,7 @@ void remote_decode(void){
     while(uBit.io.P16.getDigitalValue()){//高电平等待
         nowtime = system_timer_current_time_us();
         if((nowtime - lasttime) > 100000){//超过100 ms,表明此时没有按键按下
-            ir_code = 0xff00;
+            ir_code = 0xffff;
             return;
         }
     }
