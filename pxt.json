@@ -1,6 +1,6 @@
 {
     "name": "cutebot",
-    "version": "6.2.2",
+    "version": "6.2.3",
     "description": "ELECFREAKS cutebot car",
     "license": "MIT",
     "dependencies": {
@@ -32,7 +32,9 @@
         "main.py",
         "main.ts",
         "_locales/es-ES/cutebot-jsdoc-strings.json",
-        "_locales/es-ES/cutebot-strings.json"
+        "_locales/es-ES/cutebot-strings.json",
+        "_locales/de-DE/cutebot-jsdoc-strings.json",
+        "_locales/de-DE/cutebot-strings.json"
     ],
     "testFiles": [
         "tests.ts"
