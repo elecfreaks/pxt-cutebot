@@ -487,42 +487,34 @@ namespace cuteBot {
     //% block="On IR receiving"
     export function IR_callback(handler: (code: number) => void) {
         pins.setPull(DigitalPin.P16, PinPullMode.PullUp)
-        control.onEvent(98, 3500, () => {
-            handler(IR_Val & 0x00ff)
-            IR_handling_flag = false;
-        })
-        control.inBackground(() => {
-            while (true) {
-                if (!IR_handling_flag){
-                    IR_Val = irCode()
-                    if (IR_Val == 0xff00 || (IR_Val & 0x00ff) == IRButtons.Eight
-                        || (IR_Val & 0x00ff) == IRButtons.Nine
-                        || (IR_Val & 0x00ff) == IRButtons.Menu
-                        || (IR_Val & 0x00ff) == IRButtons.Up
-                        || (IR_Val & 0x00ff) == IRButtons.Left
-                        || (IR_Val & 0x00ff) == IRButtons.Right
-                        || (IR_Val & 0x00ff) == IRButtons.Down
-                        || (IR_Val & 0x00ff) == IRButtons.OK
-                        || (IR_Val & 0x00ff) == IRButtons.Plus
-                        || (IR_Val & 0x00ff) == IRButtons.Minus
-                        || (IR_Val & 0x00ff) == IRButtons.Back
-                        || (IR_Val & 0x00ff) == IRButtons.Zero
-                        || (IR_Val & 0x00ff) == IRButtons.One
-                        || (IR_Val & 0x00ff) == IRButtons.Two
-                        || (IR_Val & 0x00ff) == IRButtons.Three
-                        || (IR_Val & 0x00ff) == IRButtons.Four
-                        || (IR_Val & 0x00ff) == IRButtons.Five
-                        || (IR_Val & 0x00ff) == IRButtons.Six
-                        || (IR_Val & 0x00ff) == IRButtons.Seven
-                    ) {
-                        IR_handling_flag = true
-                        if (IR_Val == 0xff00)
-                            IR_Val = 0x0001
-                        control.raiseEvent(98, 3500, EventCreationMode.CreateAndFire)
-                    }
-                }
-                basic.pause(20)
+        basic.forever(() => {
+            IR_Val = irCode()
+            if ((IR_Val == 0xff00 || (IR_Val & 0x00ff) == IRButtons.Eight
+                || (IR_Val & 0x00ff) == IRButtons.Nine
+                || (IR_Val & 0x00ff) == IRButtons.Menu
+                || (IR_Val & 0x00ff) == IRButtons.Up
+                || (IR_Val & 0x00ff) == IRButtons.Left
+                || (IR_Val & 0x00ff) == IRButtons.Right
+                || (IR_Val & 0x00ff) == IRButtons.Down
+                || (IR_Val & 0x00ff) == IRButtons.OK
+                || (IR_Val & 0x00ff) == IRButtons.Plus
+                || (IR_Val & 0x00ff) == IRButtons.Minus
+                || (IR_Val & 0x00ff) == IRButtons.Back
+                || (IR_Val & 0x00ff) == IRButtons.Zero
+                || (IR_Val & 0x00ff) == IRButtons.One
+                || (IR_Val & 0x00ff) == IRButtons.Two
+                || (IR_Val & 0x00ff) == IRButtons.Three
+                || (IR_Val & 0x00ff) == IRButtons.Four
+                || (IR_Val & 0x00ff) == IRButtons.Five
+                || (IR_Val & 0x00ff) == IRButtons.Six
+                || (IR_Val & 0x00ff) == IRButtons.Seven)
+                && IR_Val > 0xff
+            ) {
+                if (IR_Val == 0xff00)
+                    IR_Val = 0x0001
+                handler(IR_Val & 0x00ff)
             }
+            basic.pause(20)
         })
     }
     /**
