@@ -485,23 +485,36 @@ namespace cuteBot {
     let IR_handling_flag = false
     //% weight=25
     //% block="On IR receiving"
-    export function IR_callback(handler: () => void) {
+    export function IR_callback(handler: (code: number) => void) {
         pins.setPull(DigitalPin.P16, PinPullMode.PullUp)
-        control.onEvent(98, 3500, ()=>{
-            handler()
-            IR_handling_flag = false;
-        })
-        control.inBackground(() => {
-            while (true) {
-                if (!IR_handling_flag){
-                    IR_Val = irCode()
-                    if (IR_Val == 0xff00 || (IR_Val & 0x00ff) <= 30 && (IR_Val & 0x00ff) != 0) {
-                        IR_handling_flag = true
-                        control.raiseEvent(98, 3500, EventCreationMode.CreateAndFire)
-                    }
-                }
-                basic.pause(20)
+        basic.forever(() => {
+            IR_Val = irCode()
+            if ((IR_Val == 0xff00 || (IR_Val & 0x00ff) == IRButtons.Eight
+                || (IR_Val & 0x00ff) == IRButtons.Nine
+                || (IR_Val & 0x00ff) == IRButtons.Menu
+                || (IR_Val & 0x00ff) == IRButtons.Up
+                || (IR_Val & 0x00ff) == IRButtons.Left
+                || (IR_Val & 0x00ff) == IRButtons.Right
+                || (IR_Val & 0x00ff) == IRButtons.Down
+                || (IR_Val & 0x00ff) == IRButtons.OK
+                || (IR_Val & 0x00ff) == IRButtons.Plus
+                || (IR_Val & 0x00ff) == IRButtons.Minus
+                || (IR_Val & 0x00ff) == IRButtons.Back
+                || (IR_Val & 0x00ff) == IRButtons.Zero
+                || (IR_Val & 0x00ff) == IRButtons.One
+                || (IR_Val & 0x00ff) == IRButtons.Two
+                || (IR_Val & 0x00ff) == IRButtons.Three
+                || (IR_Val & 0x00ff) == IRButtons.Four
+                || (IR_Val & 0x00ff) == IRButtons.Five
+                || (IR_Val & 0x00ff) == IRButtons.Six
+                || (IR_Val & 0x00ff) == IRButtons.Seven)
+                && IR_Val > 0xff
+            ) {
+                if (IR_Val == 0xff00)
+                    IR_Val = 0x0001
+                handler(IR_Val & 0x00ff)
             }
+            basic.pause(20)
         })
     }
     /**
@@ -510,8 +523,7 @@ namespace cuteBot {
     //% block="IR Button %Button is pressed"
     //% weight=15
     export function IR_Button(Button: IRButtons): boolean {
-        if (IR_Val == 0xff00)
-            IR_Val = 0x0001
+        if (IR_Val == 0xffff) return false // over time
         return (IR_Val & 0x00ff) == Button
     }
     function initEvents(): void {

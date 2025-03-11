@@ -12,37 +12,47 @@ int logic_value(){//判断逻辑值"0"和"1"子函数
     uint32_t nowtime;
     while(!uBit.io.P16.getDigitalValue());//低等待
     nowtime = system_timer_current_time_us();
-    if((nowtime - lasttime) > 400 && (nowtime - lasttime) < 700){//低电平560us
+    if((nowtime - lasttime) > 350 && (nowtime - lasttime) < 850){//低电平560us
         while(uBit.io.P16.getDigitalValue());//是高就等待
         lasttime = system_timer_current_time_us();
-        if((lasttime - nowtime)>400 && (lasttime - nowtime) < 700){//接着高电平560us
+        if((lasttime - nowtime)>350 && (lasttime - nowtime) < 850){//接着高电平560us
             return 0;
-        }else if((lasttime - nowtime)>1500 && (lasttime - nowtime) < 1800){//接着高电平1.7ms
+        }else if((lasttime - nowtime)>1350 && (lasttime - nowtime) < 1950){//接着高电平1.7ms
             return 1;
        }
     }
-uBit.serial.printf("error\r\n");
     return -1;
 }
 
 void pulse_deal(){
     int i;
+    int num;
     ir_addr=0x00;//清零
     for(i=0; i<16;i++ )
     {
-      if(logic_value() == 1)
-      {
-        ir_addr |=(1<<i);
-      }
+        num = logic_value();
+        if(num == 1)
+        {
+            ir_addr |=(1<<i);
+        }else if (num == -1) {
+            ir_addr = 0;
+            break;
+        }
     }
     //解析遥控器编码中的command指令
     ir_code=0x00;//清零
     for(i=0; i<16;i++ )
     {
-      if(logic_value() == 1)
-      {
-        ir_code |=(1<<i);
-      }
+        num = logic_value();
+        if(num == 1)
+        {
+            ir_code |=(1<<i);
+        }
+        else if (num == -1) 
+        {
+            ir_code = 0; 
+            break;
+        }
     }
 
 }
@@ -62,7 +72,7 @@ void remote_decode(void){
     lasttime = system_timer_current_time_us();
     while(!uBit.io.P16.getDigitalValue());//低等待
     nowtime = system_timer_current_time_us();
-    if((nowtime - lasttime) < 10000 && (nowtime - lasttime) > 8000){//9ms
+    if((nowtime - lasttime) < 10000 && (nowtime - lasttime) > 5000){//9ms
         while(uBit.io.P16.getDigitalValue());//高等待
         lasttime = system_timer_current_time_us();
         if((lasttime - nowtime) > 4000 && (lasttime - nowtime) < 5000){//4.5ms,接收到了红外协议头且是新发送的数据。开始解析逻辑0和1
